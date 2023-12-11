@@ -1,0 +1,34 @@
+.Navbar {
+    background-color: #181c30;
+    color: #ffffff;
+    width: 100%;
+    height: 55px;
+}
+
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+}
+
+li {
+    float: left;
+    padding-left: 20px;
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    flex-direction:column;
+    height: 50px;
+}
+
+.right {
+    float: right !important;
+    padding-right: 20px;
+}
+
+.centre {
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%);
+}
