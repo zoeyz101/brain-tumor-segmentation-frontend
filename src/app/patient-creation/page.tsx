@@ -23,55 +23,70 @@ function CreatePatientForm() {
   }
   
   return (
-    <form onSubmit = { handleSubmit }>
-      <label>
-        First Name: 
+    <form onSubmit={ handleSubmit }>
+      <div className='row-auto mb-3'>
+        <div className='col-auto'>
+        <label htmlFor='firstName'>First Name: </label>
         <input
-          type = 'text'
-          placeholder = 'First Name'
-          name = 'firstName'
-          value = { formData.firstName }
-          onChange = { handleChange }
+          type='text'
+          id='firstName'
+          placeholder='First Name'
+          aria-label='First Name'
+          name='firstName'
+          value={ formData.firstName }
+          onChange={ handleChange }
         />
-      </label>
-      <label>
-        Last Name: 
+        </div>
+        <div className='col-auto'>
+        <label htmlFor='lastName'>Last Name: </label>
         <input
-          type = 'text'
-          placeholder = ' Last Name'
-          name = 'lastName'
-          value = { formData.lastName }
-          onChange = { handleChange }
+          type='text'
+          id='lastName'
+          placeholder=' Last Name'
+          aria-label='Last Name'
+          name='lastName'
+          value={ formData.lastName }
+          onChange={ handleChange }
         />
-      </label>
-      <label>
-        Email Address: 
+        </div>
+      </div>
+      <div className='row-auto mb-3'>
+        <label htmlFor='email'>Email Address: </label>
         <input
-          type = 'email'
-          placeholder = 'Patient Email Address'
-          name = 'email'
-          value = { formData.email }
-          onChange = { handleChange }
+          type='email'
+          id='email'
+          placeholder='Patient Email Address'
+          aria-label='Patient Email Address'
+          name='email'
+          value={ formData.email }
+          onChange={ handleChange }
         />
-      </label>
-      <label>
-        Date of Birth: 
+      </div>
+      <div className='row-auto mb-3'>
+        <label htmlFor='dob'>Date of Birth: </label>
         <input
-          type = 'date'
-          name = 'dob'
-          value = { formData.dob }
-          onChange = { handleChange }
+          type='date'
+          id='dob'
+          aria-label='Date of Birth'
+          name='dob'
+          value={ formData.dob }
+          onChange={ handleChange }
         />
-      </label>
-      <input type = 'button' value = 'Upload MRI Images' />
-      <input type = 'submit' value = 'Create Patient' />
+      </div>
+      <div className='row-auto mb-3'>
+        <label htmlFor='imageUpload'>Upload MRI Images: </label>
+        <input type='file' id='imageUpload' />
+      </div>
+      <div className = 'row-auto'>
+        <input type='submit' value='Create Patient' />
+      </div>
     </form>
   )
 }
 
 export default function Page() {
-  return <div>
+  return <div className='w-100'>
     <h1>Create New Patient</h1>
-    { CreatePatientForm() }
+    <div className='flex justify-center'>{ CreatePatientForm() }</div>
   </div>
 }
