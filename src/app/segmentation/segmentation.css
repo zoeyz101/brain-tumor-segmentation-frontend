@@ -1,0 +1,5 @@
+#seg-preview > * {
+    display: block;
+    margin: 0 30px;
+    font-size: 75px;
+}
