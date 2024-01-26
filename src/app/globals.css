@@ -18,10 +18,35 @@
 
 body {
   color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+  background: #ffffff;
+}
+
+h1 {
+  color: #000000;
+  font-size: x-large;
+  font-weight: bold;
+  padding-top: 50px;
+  padding-bottom: 30px;
+  text-align: center;
+}
+
+div {
+  width: 100%;
+}
+
+/** Styling for forms **/
+form {
+  width: 80%;
+}
+
+form input {
+  border: 1px solid gray;
+  border-radius: 6px;
+  padding: 2px 5px;
+  display: block;
+  width: 100%;
+}
+
+form label {
+  display: block;
 }
