@@ -2,8 +2,16 @@
 
 import React from 'react';
 import { useState } from 'react';
+import { useRouter } from 'next/navigation';
+import './patient-creation.css';
+
+function createPatient() {
+  console.log('Sending patient creation request');
+}
 
 function CreatePatientForm() {
+  const router = useRouter();
+
   const [formData, setFormData] = useState({
     firstName: '',
     lastName: '',
@@ -19,7 +27,8 @@ function CreatePatientForm() {
 
   const handleSubmit = (event: any) => {
     event.preventDefault();
-    alert(formData);
+    createPatient();
+    router.push('/physician-view');
   }
   
   return (
@@ -78,7 +87,7 @@ function CreatePatientForm() {
         <input type='file' id='imageUpload' />
       </div>
       <div className = 'row-auto'>
-        <input type='submit' value='Create Patient' />
+        <input type='submit' className='create-patient' value='Create Patient' />
       </div>
     </form>
   )
