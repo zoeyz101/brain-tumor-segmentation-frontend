@@ -5,6 +5,7 @@ import Image from 'next/image';
 import SearchBar from '../search-bar/search-bar';
 import { useRouter } from 'next/navigation';
 import './navbar.css';
+import * as CONSTANTS from '../constants';
 
 var logo = require('../../assets/dark_logo_image_only.png');
 
@@ -12,11 +13,11 @@ function NavBar() {
   const router = useRouter();
   
   const goToPatientView = () => {
-    router.push('/patient-info');
+    router.push(CONSTANTS.PATIENT_VIEW);
   }
   
   const goToPatientCreation = () => {
-    router.push('/patient-creation');
+    router.push(CONSTANTS.PATIENT_CREATION);
   }
 
   return (

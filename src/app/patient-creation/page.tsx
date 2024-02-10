@@ -34,7 +34,7 @@ function CreatePatientForm() {
   const handleSubmit = (event: any) => {
     event.preventDefault();
     createPatient();
-    router.push('/physician-view');
+    router.push(CONSTANTS.SEGMENTATION);
   }
   
   return (

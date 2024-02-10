@@ -1,12 +1,20 @@
+'use client';
 
 import React from 'react';
 import Image from 'next/image';
-import './segmentation.css'
+import { useRouter } from 'next/navigation';
+import './segmentation.css';
+import * as CONSTANTS from '../constants';
 
 var img_seg = require('../../assets/tumor.jpg');
 var img_nonseg = require('../../assets/tumor.jpg');
 
 export default function Page() {
+  const router = useRouter();
+  const approveSegmentation = () => {
+    router.push(CONSTANTS.PHYSICIAN_VIEW);
+  }
+
   return <div>
     <h1>Approve Segmentation Images</h1>
     <div className='flex justify-center mb-7' id='seg-preview'>
@@ -16,7 +24,7 @@ export default function Page() {
       <input type='button' value='&raquo;' aria-label='Next' />
     </div>
     <div className='flex justify-center'>
-      <input type='button' value='Approve Segmentation' aria-label='Approve' />
+      <input type='button' value='Approve Segmentation' aria-label='Approve' onClick={approveSegmentation} />
     </div>
   </div>
 }

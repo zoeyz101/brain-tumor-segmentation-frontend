@@ -3,6 +3,7 @@
 import React from 'react';
 import { useRouter } from 'next/navigation';
 import './navbar.css';
+import * as CONSTANTS from '../constants';
 
 var logo = require('../../assets/dark_logo_image_only.png');
 
@@ -10,7 +11,7 @@ function PatientViewNavBar() {
   const router = useRouter();
   
   const goToPhysicianView = () => {
-    router.push('/physician-view');
+    router.push(CONSTANTS.PHYSICIAN_VIEW);
   }
   
   return (
