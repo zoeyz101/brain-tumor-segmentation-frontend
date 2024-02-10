@@ -1,12 +1,18 @@
 'use client';
 
 import React from 'react';
+import axios from 'axios';
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import './patient-creation.css';
+import * as CONSTANTS from '../constants';
 
 function createPatient() {
   console.log('Sending patient creation request');
+  axios
+    .get(CONSTANTS.API + CONSTANTS.EXAMPLES)
+    .then((result) => console.log('Examples: ' + result))
+    .catch((error) => console.log(error));
 }
 
 function CreatePatientForm() {
