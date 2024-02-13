@@ -1,0 +1,15 @@
+body {
+    background: #ffffff;
+}
+
+h1 {
+    color: var(--dark-accent-color);
+}
+
+label {
+    color: var(--dark-accent-color);
+}
+
+.create-patient {
+    background: var(--light-button-color);
+}

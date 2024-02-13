@@ -1,11 +1,25 @@
+'use client';
+
 import React from 'react';
 import Image from 'next/image';
 import SearchBar from '../search-bar/search-bar';
+import { useRouter } from 'next/navigation';
 import './navbar.css';
+import * as CONSTANTS from '../constants';
 
 var logo = require('../../assets/dark_logo_image_only.png');
 
 function NavBar() {
+  const router = useRouter();
+  
+  const goToPatientView = () => {
+    router.push(CONSTANTS.PATIENT_VIEW);
+  }
+  
+  const goToPatientCreation = () => {
+    router.push(CONSTANTS.PATIENT_CREATION);
+  }
+
   return (
     <div className='Navbar'>
       <ul>
@@ -13,8 +27,8 @@ function NavBar() {
         <li><b>NeuroMap</b></li>
         <li className='centre'><SearchBar /></li>
         <li className='right'>Dr. John Doe</li>
-        <li className='right'>[Create New Patient]</li> 
-        <li className='right'>[See Patient View]</li>
+        <li className='right' onClick={goToPatientCreation}>[Create New Patient]</li> 
+        <li className='right' onClick={goToPatientView}>[See Patient View]</li>
       </ul>
     </div>
   )

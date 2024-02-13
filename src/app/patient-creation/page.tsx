@@ -1,9 +1,23 @@
 'use client';
 
 import React from 'react';
+import axios from 'axios';
 import { useState } from 'react';
+import { useRouter } from 'next/navigation';
+import './patient-creation.css';
+import * as CONSTANTS from '../constants';
+
+function createPatient() {
+  console.log('Sending patient creation request');
+  axios
+    .get(CONSTANTS.API + CONSTANTS.EXAMPLES)
+    .then((result) => console.log('Examples: ' + result))
+    .catch((error) => console.log(error));
+}
 
 function CreatePatientForm() {
+  const router = useRouter();
+
   const [formData, setFormData] = useState({
     firstName: '',
     lastName: '',
@@ -19,7 +33,8 @@ function CreatePatientForm() {
 
   const handleSubmit = (event: any) => {
     event.preventDefault();
-    alert(formData);
+    createPatient();
+    router.push(CONSTANTS.SEGMENTATION);
   }
   
   return (
@@ -78,7 +93,7 @@ function CreatePatientForm() {
         <input type='file' id='imageUpload' />
       </div>
       <div className = 'row-auto'>
-        <input type='submit' value='Create Patient' />
+        <input type='submit' className='create-patient' value='Create Patient' />
       </div>
     </form>
   )
