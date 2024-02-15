@@ -1,8 +1,8 @@
 import React from 'react';
-import Image from 'next/image';
-import NavBar from '../navbar/navbar'
-import InfoPanel from '../info-panel/info-panel'
-import './physician-view.css'
+import NavBar from '../navbar/navbar';
+import InfoPanel from '../info-panel/info-panel';
+import Visualization from '../services/visualization';
+import './physician-view.css';
 
 var img = require('../../assets/tumor.jpg');
 
@@ -24,9 +24,7 @@ export default function Page() {
           </div>
           <InfoPanel />
         </div>
-        <div className='img'>
-          <Image src={img} width={750} alt='mri'/>
-        </div>
+        <Visualization />
       </div>
     </div>
   )

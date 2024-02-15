@@ -16,6 +16,11 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
+      <head>
+        {/* Load THREEJS before AMI */}
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r81/three.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/ami.js/0.0.12/ami.min.js"></script>
+      </head>
       <body className={inter.className}>{children}</body>
     </html>
   )
