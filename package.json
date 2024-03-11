@@ -18,7 +18,8 @@
     "react-bootstrap": "^2.10.0",
     "react-dom": "^18.2.0",
     "react-router-dom": "^6.22.0",
-    "reactstrap": "^8.9.0"
+    "reactstrap": "^8.9.0",
+    "three": "^0.162.0"
   },
   "devDependencies": {
     "@types/node": "^20",
