@@ -7,16 +7,21 @@ import { useRouter } from 'next/navigation';
 import './patient-creation.css';
 import * as CONSTANTS from '../constants';
 
-function createPatient() {
-  console.log('Sending patient creation request');
-  axios
-    .get(CONSTANTS.API + CONSTANTS.EXAMPLES)
-    .then((result) => console.log('Examples: ' + result))
-    .catch((error) => console.log(error));
-}
-
-function CreatePatientForm() {
+export default function Page() {
   const router = useRouter();
+  const handleSubmit = (event: any) => {
+    event.preventDefault();
+    createPatient();
+    router.push(CONSTANTS.SEGMENTATION);
+  }
+
+  function createPatient() {
+      console.log('Sending patient creation request');
+      axios
+        .get(CONSTANTS.API + CONSTANTS.EXAMPLES)
+        .then((result) => console.log('Examples: ' + result))
+        .catch((error) => console.log(error));
+  }
 
   const [formData, setFormData] = useState({
     firstName: '',
@@ -35,92 +40,58 @@ function CreatePatientForm() {
   const handleChange = (event: any) => {
     const name = event.target.name;
     const value = event.target.value;
-    setFormData((prevState) => ({ ...prevState, [name]: value }));
-  };
-
-  const handleSubmit = (event: any) => {
-    event.preventDefault();
-    createPatient();
-    router.push(CONSTANTS.SEGMENTATION);
-  };
-
-  return (
-    <form onSubmit={handleSubmit}>
-      <div className='row-auto mb-3'>
-        <div className='col-auto'>
-          <label htmlFor='firstName'>First Name: </label>
-          <input
-            type='text'
-            id='firstName'
-            placeholder='First Name'
-            aria-label='First Name'
-            name='firstName'
-            value={formData.firstName}
-            onChange={handleChange}
-          />
-        </div>
-        <div className='col-auto'>
-          <label htmlFor='lastName'>Last Name: </label>
-          <input
-            type='text'
-            id='lastName'
-            placeholder=' Last Name'
-            aria-label='Last Name'
-            name='lastName'
-            value={formData.lastName}
-            onChange={handleChange}
-          />
-        </div>
-      </div>
-      <div className='row-auto mb-3'>
-        <label htmlFor='email'>Email Address: </label>
-        <input
-          type='email'
-          id='email'
-          placeholder='Patient Email Address'
-          aria-label='Patient Email Address'
-          name='email'
-          value={formData.email}
-          onChange={handleChange}
-        />
-      </div>
-      <div className='row-auto mb-3'>
-        <label htmlFor='dob'>Date of Birth: </label>
-        <input
-          type='date'
-          id='dob'
-          aria-label='Date of Birth'
-          name='dob'
-          value={formData.dob}
-          onChange={handleChange}
-        />
-      </div>
-      <div className='row-auto mb-3'>
-        <label htmlFor='imageUpload'>Upload MRI Images: </label>
-        <input type='file' id='imageUpload' onChange={handleFileChange} />
-      </div>
-      <div className='row-auto'>
-        <input type='submit' className='create-patient' value='Create Patient' />
-      </div>
-    </form>
-  );
-}
-
-function Page() {
-  const router = useRouter();
-
-  const handleSubmit = (event: any) => {
-    event.preventDefault();
-    createPatient();
-    router.push(CONSTANTS.SEGMENTATION);
-  };
-
-  return (
-    <div className='w-100'>
+    setFormData((prevState) => ({ ...prevState, [name]: value }))
+  }
+    
+  return(
+    <div className='create-patient'>
       <h1>Create New Patient</h1>
-      <div className='flex justify-center'>{CreatePatientForm()}</div>
+      <form className="content-center w-full">
+        <div className="patient-row">
+          <div className="form-names">
+            <label htmlFor="first-name">
+              First Name
+            </label>
+            <input id="first-name" type="text"/>
+          </div>
+          <div className="form-names">
+            <label htmlFor="last-name">
+              Last Name
+            </label>
+            <input id="last-name" type="text"/>
+        </div>
+        </div>
+        <div className="patient-row">
+            <label htmlFor="email">
+              Email
+            </label>
+            <input id="email" type="text"/>
+        </div>
+        <div className="patient-row">
+          <label htmlFor='dob'>
+            Date of Birth
+          </label>
+          <input
+            type='date'
+            id='dob'
+            aria-label='Date of Birth'
+            name='dob'
+            value={ formData.dob }
+            onChange={ handleChange }
+          />
+        </div>
+        <div className='patient-row'>
+          <label htmlFor='imageUpload'>
+            Upload MRI Image
+          </label>
+          <input type='file' id='imageUpload' />
+        </div>
+        <button>
+          Create Patient
+        </button>
+      </form>
     </div>
-  );
+  )
 }
 
 export default Page;
