@@ -31,14 +31,15 @@ export default function Page() {
     dob: '',
     file: null,
   });
-  const { pending } = useFormStatus();
+  const [fileData, setFileData] = useState(null);
 
   function disabled() {
      return (
       formData.firstName.trim() == '' ||
       formData.lastName.trim() == '' ||
       formData.email.trim() == '' ||
-      formData.dob.trim() == ''
+      formData.dob.trim() == '' ||
+      fileData == null
     )
   };
 
@@ -52,6 +53,12 @@ export default function Page() {
     const name = event.target.name;
     const value = event.target.value;
     setFormData((prevState) => ({ ...prevState,[name]: value }))
+  }
+
+  const handleFiles = (event: any) => {
+    const files = event.target.files;
+    console.log('Files:', files);
+    setFileData(files);
   }
     
   return(
@@ -93,9 +100,9 @@ export default function Page() {
         </div>
         <div>
           <label htmlFor='imageUpload'>
-            Upload MRI Image
+            Upload MRI Image (nifti)
           </label>
-          <input className='image-upload' type='file' id='imageUpload' />
+          <input className='image-upload' type='file' id='imageUpload' accept=".nii, .nii.gz" multiple onChange={handleFiles} />
         </div>
         <button disabled={disabled()}>
           Create Patient
