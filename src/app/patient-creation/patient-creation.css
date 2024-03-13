@@ -20,6 +20,12 @@ button {
         border: 1px solid var(--dark-accent-color);
     }
 }
+button:disabled {
+    background-color: #d3d3d3; /* Light gray */
+    color: #808080; /* Dark gray */
+    cursor: not-allowed;
+  }
+
 label {
     color: var(--dark-accent-color);
 }
@@ -32,6 +38,15 @@ label {
         flex-wrap: wrap;
         margin-bottom: 1rem;
         justify-content: space-between;
+    }
+    .image-upload {
+        border: 0;
+        padding: 1rem 0;
+        color: black;
+        border-radius: 0;
+        &:focus {
+            border: 1.5px solid var(--light-accent-color);
+        }
     }
 
     .form-names {

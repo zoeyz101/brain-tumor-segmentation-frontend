@@ -4,6 +4,7 @@ import React from 'react';
 import axios from 'axios';
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
+import { useFormStatus } from "react-dom";
 import './patient-creation.css';
 import * as CONSTANTS from '../constants';
 
@@ -15,12 +16,12 @@ export default function Page() {
     router.push(CONSTANTS.SEGMENTATION);
   }
 
-  function createPatient() {
-      console.log('Sending patient creation request');
-      axios
-        .get(CONSTANTS.API + CONSTANTS.EXAMPLES)
-        .then((result) => console.log('Examples: ' + result))
-        .catch((error) => console.log(error));
+  function createPatient(){
+      console.log('Sending patient creation request:', formData );
+  //     axios
+  //       .get(CONSTANTS.API + CONSTANTS.EXAMPLES)
+  //       .then((result) => console.log('Examples: ' + result))
+  //       .catch((error) => console.log(error));
   }
 
   const [formData, setFormData] = useState({
@@ -30,6 +31,16 @@ export default function Page() {
     dob: '',
     file: null,
   });
+  const { pending } = useFormStatus();
+
+  function disabled() {
+     return (
+      formData.firstName.trim() == '' ||
+      formData.lastName.trim() == '' ||
+      formData.email.trim() == '' ||
+      formData.dob.trim() == ''
+    )
+  };
 
   const handleFileChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     if (event.target.files) {
@@ -40,32 +51,32 @@ export default function Page() {
   const handleChange = (event: any) => {
     const name = event.target.name;
     const value = event.target.value;
-    setFormData((prevState) => ({ ...prevState, [name]: value }))
+    setFormData((prevState) => ({ ...prevState,[name]: value }))
   }
     
   return(
     <div className='create-patient'>
       <h1>Create New Patient</h1>
-      <form className="content-center w-full">
+      <form className="content-center w-full" action={createPatient}>
         <div className="patient-row">
           <div className="form-names">
             <label htmlFor="first-name">
               First Name
             </label>
-            <input id="first-name" type="text"/>
+            <input id="first-name" name="firstName" value={formData.firstName} onChange={handleChange} type="text" placeholder='John'/>
           </div>
           <div className="form-names">
             <label htmlFor="last-name">
               Last Name
             </label>
-            <input id="last-name" type="text"/>
+            <input id="last-name" type="text" name="lastName" onChange={handleChange} placeholder='Doe'/>
         </div>
         </div>
         <div className="patient-row">
             <label htmlFor="email">
               Email
             </label>
-            <input id="email" type="text"/>
+            <input id="email" type="text" name="email" value={formData.email} onChange={handleChange} placeholder='email@email.com'/>
         </div>
         <div className="patient-row">
           <label htmlFor='dob'>
@@ -80,18 +91,16 @@ export default function Page() {
             onChange={ handleChange }
           />
         </div>
-        <div className='patient-row'>
+        <div>
           <label htmlFor='imageUpload'>
             Upload MRI Image
           </label>
-          <input type='file' id='imageUpload' />
+          <input className='image-upload' type='file' id='imageUpload' />
         </div>
-        <button>
+        <button disabled={disabled()}>
           Create Patient
         </button>
       </form>
     </div>
   )
 }
-
-export default Page;
