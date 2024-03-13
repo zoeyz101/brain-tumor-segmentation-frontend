@@ -23,46 +23,53 @@ function CreatePatientForm() {
     lastName: '',
     email: '',
     dob: '',
+    file: null,
   });
+
+  const handleFileChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    if (event.target.files) {
+      setFormData({ ...formData, file: event.target.files[0] });
+    }
+  };
 
   const handleChange = (event: any) => {
     const name = event.target.name;
     const value = event.target.value;
-    setFormData((prevState) => ({ ...prevState, [name]: value }))
-  }
+    setFormData((prevState) => ({ ...prevState, [name]: value }));
+  };
 
   const handleSubmit = (event: any) => {
     event.preventDefault();
     createPatient();
     router.push(CONSTANTS.SEGMENTATION);
-  }
-  
+  };
+
   return (
-    <form onSubmit={ handleSubmit }>
+    <form onSubmit={handleSubmit}>
       <div className='row-auto mb-3'>
         <div className='col-auto'>
-        <label htmlFor='firstName'>First Name: </label>
-        <input
-          type='text'
-          id='firstName'
-          placeholder='First Name'
-          aria-label='First Name'
-          name='firstName'
-          value={ formData.firstName }
-          onChange={ handleChange }
-        />
+          <label htmlFor='firstName'>First Name: </label>
+          <input
+            type='text'
+            id='firstName'
+            placeholder='First Name'
+            aria-label='First Name'
+            name='firstName'
+            value={formData.firstName}
+            onChange={handleChange}
+          />
         </div>
         <div className='col-auto'>
-        <label htmlFor='lastName'>Last Name: </label>
-        <input
-          type='text'
-          id='lastName'
-          placeholder=' Last Name'
-          aria-label='Last Name'
-          name='lastName'
-          value={ formData.lastName }
-          onChange={ handleChange }
-        />
+          <label htmlFor='lastName'>Last Name: </label>
+          <input
+            type='text'
+            id='lastName'
+            placeholder=' Last Name'
+            aria-label='Last Name'
+            name='lastName'
+            value={formData.lastName}
+            onChange={handleChange}
+          />
         </div>
       </div>
       <div className='row-auto mb-3'>
@@ -73,8 +80,8 @@ function CreatePatientForm() {
           placeholder='Patient Email Address'
           aria-label='Patient Email Address'
           name='email'
-          value={ formData.email }
-          onChange={ handleChange }
+          value={formData.email}
+          onChange={handleChange}
         />
       </div>
       <div className='row-auto mb-3'>
@@ -84,24 +91,36 @@ function CreatePatientForm() {
           id='dob'
           aria-label='Date of Birth'
           name='dob'
-          value={ formData.dob }
-          onChange={ handleChange }
+          value={formData.dob}
+          onChange={handleChange}
         />
       </div>
       <div className='row-auto mb-3'>
         <label htmlFor='imageUpload'>Upload MRI Images: </label>
-        <input type='file' id='imageUpload' />
+        <input type='file' id='imageUpload' onChange={handleFileChange} />
       </div>
-      <div className = 'row-auto'>
+      <div className='row-auto'>
         <input type='submit' className='create-patient' value='Create Patient' />
       </div>
     </form>
-  )
+  );
 }
 
-export default function Page() {
-  return <div className='w-100'>
-    <h1>Create New Patient</h1>
-    <div className='flex justify-center'>{ CreatePatientForm() }</div>
-  </div>
+function Page() {
+  const router = useRouter();
+
+  const handleSubmit = (event: any) => {
+    event.preventDefault();
+    createPatient();
+    router.push(CONSTANTS.SEGMENTATION);
+  };
+
+  return (
+    <div className='w-100'>
+      <h1>Create New Patient</h1>
+      <div className='flex justify-center'>{CreatePatientForm()}</div>
+    </div>
+  );
 }
+
+export default Page;
