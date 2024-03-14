@@ -253,3 +253,4 @@ export const colors = {
 export const niiFile = 'https://cdn.rawgit.com/FNNDSC/data/master/nifti/adi_brain/adi_brain.nii.gz';
 
 export const niiFileTest = 'https://cdn.rawgit.com/y-ng/capstone_nifti_test/master/BraTS-GLI-00000-000-t2f.nii.gz'
+export const stlFile = 'https://cdn.rawgit.com/y-ng/capstone_nifti_test/master/BraTS-GLI-00000-000-seg.stl'

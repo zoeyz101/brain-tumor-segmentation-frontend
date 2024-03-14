@@ -61,7 +61,7 @@ const Visualization3D = () => {
         // build the gui
         gui(stackHelper);
 
-        // center camera and interactor to center of bouding box
+        // center camera and interactor to center of bounding box
         const centerLPS = stackHelper.stack.worldCenter();
         camera.lookAt(centerLPS.x, centerLPS.y, centerLPS.z);
         camera.updateProjectionMatrix();
