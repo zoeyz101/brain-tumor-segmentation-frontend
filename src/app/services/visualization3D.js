@@ -5,7 +5,7 @@ import React, { useEffect } from 'react';
 import * as AMI from 'ami.js';
 import * as CONSTANTS from '../constants';
 
-const Visualization = () => {
+const Visualization3D = () => {
   useEffect(() => {
 
     // Classic ThreeJS setup
@@ -44,7 +44,9 @@ const Visualization = () => {
     // Load DICOM images and create AMI Helpers
     const loader = new AMI.VolumeLoader(container);
     loader
-      .load(CONSTANTS.files)
+      //.load(CONSTANTS.files)
+      //.load(CONSTANTS.niiFile)
+      .load(CONSTANTS.niiFileTest)
       .then(() => {
         const series = loader.data[0].mergeSeries(loader.data);
         const stack = series[0].stack[0];
@@ -143,5 +145,5 @@ const Visualization = () => {
   );
 };
   
-export default Visualization;
+export default Visualization3D;
   

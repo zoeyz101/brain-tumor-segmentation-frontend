@@ -5,7 +5,7 @@ import InfoPanel from '../info-panel/info-panel';
 import './physician-view.css';
 
 const VisualizationComponent = dynamic(
-  () => import('../services/visualization'),
+  () => import('../services/visualization3D'),
   {
     ssr: false,
   }

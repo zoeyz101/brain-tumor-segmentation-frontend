@@ -19,7 +19,8 @@ export default function RootLayout({
       <head>
         {/* Load THREEJS before AMI */}
         <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/dat-gui/0.7.3/dat.gui.min.js"></script>
-        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r119/three.js"></script>
+        <script type="text/javascript" src="https://unpkg.com/three@0.113.0/build/three.min.js"></script>
+        <script type="text/javascript" src="https://unpkg.com/three@0.113.0/examples/js/loaders/STLLoader.js"></script>
         <script type="text/javascript" src="https://unpkg.com/ami.js@next/build/ami.min.js"></script>
       </head>
       <body className={inter.className}>
