@@ -64,7 +64,7 @@ const Visualization3DMesh = () => {
 
     // Load model and transform to LPS space
     const loaderSTL = new THREE.STLLoader();
-    loaderSTL.load(/*CONSTANTS.stlModel*/ CONSTANTS.stlFile, geometry => {
+    loaderSTL.load(CONSTANTS.stlFile, geometry => {
       const material = new THREE.MeshPhongMaterial({
         color: 0xf44336,
         specular: 0x111111,
