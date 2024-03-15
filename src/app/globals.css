@@ -107,11 +107,19 @@ form label {
   z-index: 1;
 }
 
-#my-gui-container-compare {
+#my-gui-container-compare-1 {
   width: 200px;
-  position: fixed;
-  top: 150px;
+  position: absolute;
+  top: 125px;
   right: 175px;
+  z-index: 1;
+}
+
+#my-gui-container-compare-2 {
+  width: 200px;
+  position: absolute;
+  top: 125px;
+  left: 710px;
   z-index: 1;
 }
 

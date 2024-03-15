@@ -115,45 +115,34 @@ const VisualizationCompare = () => {
       .then(function() {
         const series = loader.data[0].mergeSeries(loader.data);
         const stack = series[0].stack[0];
+
+        const series_base = loader.data[0].mergeSeries(loader.data);
+        const stack_base = series_base[0].stack[0];
+
         loader.free();
 
         const stackHelper = new AMI.StackHelper(stack);
         stackHelper.border.color = CONSTANTS.colors.red;
         scene.add(stackHelper);
 
+        const stackHelper_base = new AMI.StackHelper(stack_base);
+        stackHelper_base.border.color = CONSTANTS.colors.red;
+        scene_base.add(stackHelper_base);
+
         // build gui
-        gui(stackHelper);
+        gui(stackHelper, stackHelper_base);
 
         const centerLPS = stackHelper.stack.worldCenter();
         camera.lookAt(centerLPS.x, centerLPS.y, centerLPS.z);
         camera.updateProjectionMatrix();
         controls.target.set(centerLPS.x, centerLPS.y, centerLPS.z);
 
-        particleLight.position.set(centerLPS.x, centerLPS.y, centerLPS.z);
-      })
-      .catch(function(error) {
-        window.console.log('oops... something went wrong...');
-        window.console.log(error);
-      });
-
-    var loader_base = new AMI.VolumeLoader(container_base);
-    loader_base
-      .load(CONSTANTS.niiFileTest)
-      .then(function() {
-        const series_base = loader_base.data[0].mergeSeries(loader_base.data);
-        const stack_base = series_base[0].stack[0];
-        loader_base.free();
-
-        const stackHelper_base = new AMI.StackHelper(stack_base);
-        stackHelper_base.border.color = CONSTANTS.colors.red;
-        scene_base.add(stackHelper_base);
-
-        gui(stackHelper_base);
-
         const centerLPS_base = stackHelper_base.stack.worldCenter();
         camera_base.lookAt(centerLPS_base.x, centerLPS_base.y, centerLPS_base.z);
         camera_base.updateProjectionMatrix();
         controls_base.target.set(centerLPS_base.x, centerLPS_base.y, centerLPS_base.z);
+
+        particleLight.position.set(centerLPS.x, centerLPS.y, centerLPS.z);
       })
       .catch(function(error) {
         window.console.log('oops... something went wrong...');
@@ -180,13 +169,21 @@ const VisualizationCompare = () => {
     animate();
 
     // setup gui
-    const gui = stackHelper => {
+    const gui = (stackHelper, stackHelper_base) => {
       const stack = stackHelper.stack;
+      const stack_base = stackHelper_base.stack;
+
       const gui = new dat.GUI({
         autoPlace: false,
       });
-      const customContainer = document.getElementById('my-gui-container-compare');
+      const customContainer = document.getElementById('my-gui-container-compare-1');
       customContainer.appendChild(gui.domElement);
+
+      const gui_base = new dat.GUI({
+        autoPlace: false,
+      });
+      const customContainer_base = document.getElementById('my-gui-container-compare-2');
+      customContainer_base.appendChild(gui_base.domElement);
 
       // stack
       const stackFolder = gui.addFolder('Stack');
@@ -205,6 +202,21 @@ const VisualizationCompare = () => {
       });
       stackFolder.open();
 
+      const stackFolder_base = gui_base.addFolder('Stack');
+      const index_base = stackFolder_base
+        .add(stackHelper_base, 'index', 0, stack_base.dimensionsIJK.z - 1)
+        .step(1)
+        .listen();
+      const orientation_base = stackFolder_base
+        .add(stackHelper_base, 'orientation', 0, 2)
+        .step(1)
+        .listen();
+      orientation_base.onChange(value => {
+        index_base.__max = stackHelper_base.orientationMaxIndex;
+        stackHelper_base.index = Math.floor(index_base.__max / 2);
+      });
+      stackFolder_base.open();
+
       // slice
       const sliceFolder = gui.addFolder('Slice');
       sliceFolder
@@ -219,25 +231,49 @@ const VisualizationCompare = () => {
       sliceFolder.add(stackHelper.slice, 'invert');
       sliceFolder.open();
 
+      const sliceFolder_base = gui_base.addFolder('Slice');
+      sliceFolder_base
+        .add(stackHelper_base.slice, 'windowWidth', 1, stack_base.minMax[1] - stack_base.minMax[0])
+        .step(1)
+        .listen();
+      sliceFolder_base
+        .add(stackHelper_base.slice, 'windowCenter', stack_base.minMax[0], stack_base.minMax[1])
+        .step(1)
+        .listen();
+      sliceFolder_base.add(stackHelper_base.slice, 'intensityAuto').listen();
+      sliceFolder_base.add(stackHelper_base.slice, 'invert');
+      sliceFolder_base.open();
+
       // bbox
       const bboxFolder = gui.addFolder('Bounding Box');
       bboxFolder.add(stackHelper.bbox, 'visible');
       bboxFolder.addColor(stackHelper.bbox, 'color');
       bboxFolder.open();
 
+      const bboxFolder_base = gui_base.addFolder('Bounding Box');
+      bboxFolder_base.add(stackHelper_base.bbox, 'visible');
+      bboxFolder_base.addColor(stackHelper_base.bbox, 'color');
+      bboxFolder_base.open();
+
       // border
       const borderFolder = gui.addFolder('Border');
       borderFolder.add(stackHelper.border, 'visible');
       borderFolder.addColor(stackHelper.border, 'color');
       borderFolder.open();
+
+      const borderFolder_base = gui_base.addFolder('Border');
+      borderFolder_base.add(stackHelper_base.border, 'visible');
+      borderFolder_base.addColor(stackHelper_base.border, 'color');
+      borderFolder_base.open();
     };
 
   });
 
   return (
     <div>
-      <div id='my-gui-container-compare'></div>
+      <div id='my-gui-container-compare-1'></div>
       <div id='container-1'></div>
+      <div id='my-gui-container-compare-2'></div>
       <div id='container-2'></div>
     </div>
   );
