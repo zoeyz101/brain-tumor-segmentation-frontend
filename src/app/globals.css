@@ -108,18 +108,18 @@ form label {
 }
 
 #my-gui-container-compare-1 {
-  width: 200px;
+  width: 150px;
   position: absolute;
   top: 125px;
-  right: 175px;
+  right: 235px;
   z-index: 1;
 }
 
 #my-gui-container-compare-2 {
-  width: 200px;
+  width: 150px;
   position: absolute;
   top: 125px;
-  left: 710px;
+  left: 525px;
   z-index: 1;
 }
 
