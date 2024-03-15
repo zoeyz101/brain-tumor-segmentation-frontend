@@ -73,16 +73,15 @@ const Visualization3DMesh = () => {
       const mesh = new THREE.Mesh(geometry, material);
       // to LPS space
       const RASToLPS = new THREE.Matrix4();
-      RASToLPS.set(1, 0, 0, 0, 0, -1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1);
-      //RASToLPS.set(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
+      RASToLPS.set(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, -1, 0, 0, 0, 0, -1);
       mesh.applyMatrix4(RASToLPS);
       scene.add(mesh);
+      mesh.position.set(0, -235, 0);
     });
 
     // Load DICOM data and setup the stack helper
     var loader = new AMI.VolumeLoader(container);
     loader
-      //.load(CONSTANTS.files2)
       .load(CONSTANTS.niiFileTest)
       .then(function() {
         const series = loader.data[0].mergeSeries(loader.data);
@@ -100,6 +99,8 @@ const Visualization3DMesh = () => {
         camera.lookAt(centerLPS.x, centerLPS.y, centerLPS.z);
         camera.updateProjectionMatrix();
         controls.target.set(centerLPS.x, centerLPS.y, centerLPS.z);
+
+        particleLight.position.set(centerLPS.x, centerLPS.y, centerLPS.z);
       })
       .catch(function(error) {
         window.console.log('oops... something went wrong...');
