@@ -92,10 +92,11 @@ const VisualizationCompare = () => {
     particleLight.add(pointLight);
 
     // Load model and transform to LPS space
+    // whole tumour mesh
     const loaderSTL = new THREE.STLLoader();
-    loaderSTL.load(CONSTANTS.stlFile0, geometry => {
+    loaderSTL.load(CONSTANTS.wholeStlFile9, geometry => {
       const material = new THREE.MeshPhongMaterial({
-        color: 0xf44336,
+        color: 0x36F466, // green 
         specular: 0x111111,
         shininess: 200,
       });
@@ -108,10 +109,46 @@ const VisualizationCompare = () => {
       mesh.position.set(0, -235, 0);
     });
 
+    ///*
+    // core tumour mesh
+    loaderSTL.load(CONSTANTS.coreStlFile9, geometry => {
+      const material = new THREE.MeshPhongMaterial({
+        color: 0x3655f4, // blue
+        specular: 0x111111,
+        shininess: 200,
+      });
+      const mesh = new THREE.Mesh(geometry, material);
+      // to LPS space
+      const RASToLPS = new THREE.Matrix4();
+      RASToLPS.set(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, -1, 0, 0, 0, 0, -1);
+      mesh.applyMatrix4(RASToLPS);
+      scene.add(mesh);
+      mesh.position.set(0, -235, 0);
+    });
+    //*/
+
+    ///*
+    // enhanced tumour mesh
+    loaderSTL.load(CONSTANTS.enhancedStlFile9, geometry => {
+      const material = new THREE.MeshPhongMaterial({
+        color: 0xf44336, // red
+        specular: 0x111111,
+        shininess: 200,
+      });
+      const mesh = new THREE.Mesh(geometry, material);
+      // to LPS space
+      const RASToLPS = new THREE.Matrix4();
+      RASToLPS.set(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, -1, 0, 0, 0, 0, -1);
+      mesh.applyMatrix4(RASToLPS);
+      scene.add(mesh);
+      mesh.position.set(0, -235, 0);
+    });
+    //*/
+
     // Load DICOM data and setup the stack helper
     var loader = new AMI.VolumeLoader(container);
     loader
-      .load(CONSTANTS.niiFileTest0)
+      .load(CONSTANTS.niiFileTest9)
       .then(function() {
         const series = loader.data[0].mergeSeries(loader.data);
         const stack = series[0].stack[0];
