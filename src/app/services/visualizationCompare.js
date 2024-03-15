@@ -3,6 +3,7 @@
 import React, { useEffect } from 'react';
 import * as AMI from 'ami.js';
 import * as CONSTANTS from '../constants';
+import VisualizationLegend from './visualizationLegend';
 
 const VisualizationCompare = () => {
   
@@ -308,6 +309,7 @@ const VisualizationCompare = () => {
 
   return (
     <div>
+      <VisualizationLegend />
       <div id='my-gui-container-compare-1'></div>
       <div id='container-1'></div>
       <div id='my-gui-container-compare-2'></div>

@@ -123,6 +123,16 @@ form label {
   z-index: 1;
 }
 
+#legend {
+  width: 200px;
+  position: fixed;
+  z-index: 1;
+  font-size: small;
+  color: #ffffff;
+  padding-left: 10px;
+  padding-top: 5px;
+}
+
 .dg li {
   padding-bottom: 20px;
 }

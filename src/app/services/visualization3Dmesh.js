@@ -3,6 +3,7 @@
 import React, { useEffect } from 'react';
 import * as AMI from 'ami.js';
 import * as CONSTANTS from '../constants';
+import VisualizationLegend from './visualizationLegend';
 
 const Visualization3DMesh = () => {
   useEffect(() => {
@@ -67,7 +68,7 @@ const Visualization3DMesh = () => {
     const loaderSTL = new THREE.STLLoader();
     loaderSTL.load(CONSTANTS.wholeStlFile9, geometry => {
       const material = new THREE.MeshPhongMaterial({
-        color: 0x36F466, // green 
+        color: 0x36f466, // green 
         specular: 0x111111,
         shininess: 200,
       });
@@ -217,6 +218,7 @@ const Visualization3DMesh = () => {
 
   return (
     <div>
+      <VisualizationLegend />
       <div id='my-gui-container'></div>
       <div id='container'></div>
     </div>
