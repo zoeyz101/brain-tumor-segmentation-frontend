@@ -93,7 +93,7 @@ const VisualizationCompare = () => {
 
     // Load model and transform to LPS space
     const loaderSTL = new THREE.STLLoader();
-    loaderSTL.load(CONSTANTS.stlFile, geometry => {
+    loaderSTL.load(CONSTANTS.stlFile0, geometry => {
       const material = new THREE.MeshPhongMaterial({
         color: 0xf44336,
         specular: 0x111111,
@@ -111,7 +111,7 @@ const VisualizationCompare = () => {
     // Load DICOM data and setup the stack helper
     var loader = new AMI.VolumeLoader(container);
     loader
-      .load(CONSTANTS.niiFileTest)
+      .load(CONSTANTS.niiFileTest0)
       .then(function() {
         const series = loader.data[0].mergeSeries(loader.data);
         const stack = series[0].stack[0];

@@ -42,5 +42,20 @@ export const colors = {
 
 export const niiFile = 'https://cdn.rawgit.com/FNNDSC/data/master/nifti/adi_brain/adi_brain.nii.gz';
 
-export const niiFileTest = 'https://cdn.rawgit.com/y-ng/capstone_nifti_test/master/BraTS-GLI-00000-000-t2f.nii.gz'
-export const stlFile = 'https://cdn.rawgit.com/y-ng/capstone_nifti_test/master/BraTS-GLI-00000-000-seg.stl'
+export const niiFileTest0 = 'https://cdn.rawgit.com/y-ng/capstone_nifti_test/master/00000/BraTS-GLI-00000-000-t2f.nii.gz'
+export const stlFile0 = 'https://cdn.rawgit.com/y-ng/capstone_nifti_test/master/00000/BraTS-GLI-00000-000-seg.stl'
+export const wholeStlFile0 = 'https://cdn.rawgit.com/y-ng/capstone_nifti_test/master/00000/BraTS-GLI-00000-000-seg-whole.stl'
+export const coreStlFile0 = 'https://cdn.rawgit.com/y-ng/capstone_nifti_test/master/00000/BraTS-GLI-00000-000-seg-core.stl'
+export const enhancedStlFile0 = 'https://cdn.rawgit.com/y-ng/capstone_nifti_test/master/00000/BraTS-GLI-00000-000-seg-enhanced.stl'
+
+export const niiFileTest3 = 'https://cdn.rawgit.com/y-ng/capstone_nifti_test/master/00003/BraTS-GLI-00003-000-t2f.nii.gz'
+export const stlFile3 = 'https://cdn.rawgit.com/y-ng/capstone_nifti_test/master/00003/BraTS-GLI-00003-000-seg.stl'
+export const wholeStlFile3 = 'https://cdn.rawgit.com/y-ng/capstone_nifti_test/master/00003/BraTS-GLI-00003-000-seg-whole.stl'
+export const coreStlFile3 = 'https://cdn.rawgit.com/y-ng/capstone_nifti_test/master/00003/BraTS-GLI-00003-000-seg-core.stl'
+export const enhancedStlFile3 = 'https://cdn.rawgit.com/y-ng/capstone_nifti_test/master/00003/BraTS-GLI-00003-000-seg-enhanced.stl'
+
+export const niiFileTest9 = 'https://cdn.rawgit.com/y-ng/capstone_nifti_test/master/00009/BraTS-GLI-00009-001-t2f.nii.gz'
+export const stlFile9 = 'https://cdn.rawgit.com/y-ng/capstone_nifti_test/master/00009/BraTS-GLI-00009-001-seg.stl'
+export const wholeStlFile9 = 'https://cdn.rawgit.com/y-ng/capstone_nifti_test/master/00009/BraTS-GLI-00009-001-seg-whole.stl'
+export const coreStlFile9 = 'https://cdn.rawgit.com/y-ng/capstone_nifti_test/master/00009/BraTS-GLI-00009-001-seg-core.stl'
+export const enhancedStlFile9 = 'https://cdn.rawgit.com/y-ng/capstone_nifti_test/master/00009/BraTS-GLI-00009-001-seg-enhanced.stl'
