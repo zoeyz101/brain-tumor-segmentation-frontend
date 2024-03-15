@@ -26,8 +26,8 @@ const Visualization3DMesh = () => {
       1000
     );
     camera.position.x = 150;
-    camera.position.y = -50;
-    camera.position.z = 750;
+    camera.position.y = -75;
+    camera.position.z = 450;
 
     // add axes
     // x axis is red, y axis is green, z axis is blue

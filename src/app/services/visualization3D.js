@@ -27,8 +27,8 @@ const Visualization3D = () => {
       1000
     );
     camera.position.x = 150;
-    camera.position.y = 150;
-    camera.position.z = 100;
+    camera.position.y = -75;
+    camera.position.z = 450;
 
     const controls = new AMI.TrackballControl(camera, container);
 
