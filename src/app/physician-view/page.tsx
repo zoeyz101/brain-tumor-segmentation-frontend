@@ -1,10 +1,16 @@
 import React from 'react';
-import Image from 'next/image';
-import NavBar from '../navbar/navbar'
-import InfoPanel from '../info-panel/info-panel'
-import './physician-view.css'
+import dynamic from 'next/dynamic';
+import NavBar from '../navbar/navbar';
+import InfoPanel from '../info-panel/info-panel';
+import './physician-view.css';
 
-var img = require('../../assets/tumor.jpg');
+const VisualizationComponent = dynamic(
+  //() => import('../services/visualization3D'),
+  () => import('../services/visualization3Dmesh'),
+  {
+    ssr: false,
+  }
+);
 
 function getPatient() {
   return 'patient';
@@ -24,10 +30,9 @@ export default function Page() {
           </div>
           <InfoPanel />
         </div>
-        <div className='img'>
-          <Image src={img} width={750} alt='mri'/>
-        </div>
+        <VisualizationComponent />
       </div>
     </div>
   )
 }
+

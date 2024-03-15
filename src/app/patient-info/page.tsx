@@ -1,10 +1,15 @@
 import React from 'react';
-import Image from 'next/image';
+import dynamic from 'next/dynamic';
 import PatientViewNavBar from '../navbar/navbar-patient'
 import InfoPanel from '../info-panel/info-panel'
 import './patient-info.css'
 
-var img = require('../../assets/tumor.jpg');
+const VisualizationComponent = dynamic(
+  () => import('../services/visualization3Dmesh'),
+  {
+    ssr: false,
+  }
+);
 
 export default function Page() {
   return (
@@ -14,9 +19,7 @@ export default function Page() {
         <div className='text'>
           <InfoPanel />
         </div>
-        <div className='img'>
-          <Image src={img} width={750} alt='mri'/>
-        </div>
+        <VisualizationComponent />
       </div>
     </div>
   )

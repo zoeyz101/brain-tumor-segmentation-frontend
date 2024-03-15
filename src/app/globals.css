@@ -55,3 +55,74 @@ form input {
 form label {
   display: block;
 }
+
+#container {
+  background-color: #000;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  /*position: relative;*/
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  z-index: 0;
+}
+
+#container-1 {
+  background-color: #000;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  /*position: relative;*/
+  float: left;
+  width: 50%;
+  height: 700px;
+  padding: 10px;
+  overflow: hidden;
+  z-index: 0;
+}
+
+#container-2 {
+  background-color: #000;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  /*position: relative;*/
+  float: left;
+  width: 50%;
+  height: 700px;
+  padding: 10px;
+  overflow: hidden;
+  z-index: 0;
+}
+
+#my-gui-container {
+  width: 200px;
+  position: fixed;
+  top: 100px;
+  right: 10px;
+  z-index: 1;
+}
+
+#my-gui-container-compare-1 {
+  width: 200px;
+  position: absolute;
+  top: 125px;
+  right: 175px;
+  z-index: 1;
+}
+
+#my-gui-container-compare-2 {
+  width: 200px;
+  position: absolute;
+  top: 125px;
+  left: 710px;
+  z-index: 1;
+}
+
+.dg li {
+  padding-bottom: 20px;
+}

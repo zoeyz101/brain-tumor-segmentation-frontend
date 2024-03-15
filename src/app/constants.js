@@ -33,3 +33,14 @@ Cost: $
 export const ADDITIONAL_INFO = `If you need more support and have further questions, there are different resources you can use: [List counseling services, financial support services, groups for patients and survivors, etc. and contact info]
 Please contact your physician for specific diagnosis and treatment inquiries.
 `;
+  
+export const colors = {
+    red: 0xff0000,
+    blue: 0x0000ff,
+    darkGrey: 0x353535,
+};
+
+export const niiFile = 'https://cdn.rawgit.com/FNNDSC/data/master/nifti/adi_brain/adi_brain.nii.gz';
+
+export const niiFileTest = 'https://cdn.rawgit.com/y-ng/capstone_nifti_test/master/BraTS-GLI-00000-000-t2f.nii.gz'
+export const stlFile = 'https://cdn.rawgit.com/y-ng/capstone_nifti_test/master/BraTS-GLI-00000-000-seg.stl'
