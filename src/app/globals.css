@@ -136,3 +136,7 @@ form label {
 .dg li {
   padding-bottom: 20px;
 }
+
+.btn {
+  cursor: pointer;
+}

@@ -12,7 +12,7 @@ export default function ApproveSegButton() {
   }
 
   return (
-    <input type='button' value='Approve Segmentation' aria-label='Approve' onClick={approveSegmentation} />
+    <input type='button' className='btn' value='Approve Segmentation' aria-label='Approve' onClick={approveSegmentation} />
   )
 }
 

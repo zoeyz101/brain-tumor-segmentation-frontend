@@ -17,7 +17,7 @@ function PatientViewNavBar() {
   return (
     <div className='Navbar'>
       <ul>
-        <li onClick={goToPhysicianView}>[Return to Physician View]</li>
+        <li className='btn' onClick={goToPhysicianView}>[Return to Physician View]</li>
         <li>[Send to Patient]</li>
         <li className='right'>Dr. John Doe</li>
       </ul>
