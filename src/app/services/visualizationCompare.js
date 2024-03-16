@@ -6,6 +6,25 @@ import * as CONSTANTS from '../constants';
 import VisualizationLegend from './visualizationLegend';
 
 const VisualizationCompare = () => {
+  var niiFile = '';
+  var stlFile = '';
+  var wholeStlFile = '';
+  var coreStlFile = '';
+  var enhancedStlFile =  '';
+
+  if (CONSTANTS.SHOW_OG) {
+    niiFile = CONSTANTS.niiFileTest9;
+    stlFile = CONSTANTS.stlFile9;
+    wholeStlFile = CONSTANTS.wholeStlFile9;
+    coreStlFile = CONSTANTS.coreStlFile9;
+    enhancedStlFile =  CONSTANTS.enhancedStlFile9;
+  } else if (CONSTANTS.SHOW_GBM) {
+    niiFile = CONSTANTS.niiFileTest0;
+    stlFile = CONSTANTS.stlFile0;
+    wholeStlFile = CONSTANTS.wholeStlFile0;
+    coreStlFile = CONSTANTS.coreStlFile0;
+    enhancedStlFile =  CONSTANTS.enhancedStlFile0;
+  }
   
   useEffect(() => {
 
@@ -95,7 +114,7 @@ const VisualizationCompare = () => {
     // Load model and transform to LPS space
     // whole tumour mesh
     const loaderSTL = new THREE.STLLoader();
-    loaderSTL.load(CONSTANTS.wholeStlFile9, geometry => {
+    loaderSTL.load(wholeStlFile, geometry => {
       const material = new THREE.MeshPhongMaterial({
         color: 0x36F466, // green 
         specular: 0x111111,
@@ -112,7 +131,7 @@ const VisualizationCompare = () => {
 
     ///*
     // core tumour mesh
-    loaderSTL.load(CONSTANTS.coreStlFile9, geometry => {
+    loaderSTL.load(coreStlFile, geometry => {
       const material = new THREE.MeshPhongMaterial({
         color: 0x3655f4, // blue
         specular: 0x111111,
@@ -130,7 +149,7 @@ const VisualizationCompare = () => {
 
     ///*
     // enhanced tumour mesh
-    loaderSTL.load(CONSTANTS.enhancedStlFile9, geometry => {
+    loaderSTL.load(enhancedStlFile, geometry => {
       const material = new THREE.MeshPhongMaterial({
         color: 0xf44336, // red
         specular: 0x111111,
@@ -149,7 +168,7 @@ const VisualizationCompare = () => {
     // Load DICOM data and setup the stack helper
     var loader = new AMI.VolumeLoader(container);
     loader
-      .load(CONSTANTS.niiFileTest9)
+      .load(niiFile)
       .then(function() {
         const series = loader.data[0].mergeSeries(loader.data);
         const stack = series[0].stack[0];

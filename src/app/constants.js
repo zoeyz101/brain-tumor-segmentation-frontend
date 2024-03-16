@@ -84,14 +84,13 @@ export const ADDITIONAL_INFO_GBM = `
 If you need more support and have further questions, there are various resources available. For counselling services and support groups, see <a href='https://www.braintumour.ca/category/support-group/'><u>here</u></a>. And financial help can be found <a href='https://cancer.ca/en/living-with-cancer/how-we-can-help/financial-help'><u>here</u></a>. Please contact your physician for specific diagnosis and treatment inquiries.
 
 `;
-  
+
+// Constants for AMI renders
 export const colors = {
     red: 0xff0000,
     blue: 0x0000ff,
     darkGrey: 0x353535,
 };
-
-export const niiFile = 'https://cdn.rawgit.com/FNNDSC/data/master/nifti/adi_brain/adi_brain.nii.gz';
 
 export const niiFileTest0 = 'https://cdn.rawgit.com/y-ng/capstone_nifti_test/master/00000/BraTS-GLI-00000-000-t2f.nii.gz'
 export const stlFile0 = 'https://cdn.rawgit.com/y-ng/capstone_nifti_test/master/00000/BraTS-GLI-00000-000-seg.stl'

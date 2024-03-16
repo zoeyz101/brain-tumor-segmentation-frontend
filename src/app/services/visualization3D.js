@@ -6,6 +6,14 @@ import * as AMI from 'ami.js';
 import * as CONSTANTS from '../constants';
 
 const Visualization3D = () => {
+  var niiFile = '';
+
+  if (CONSTANTS.SHOW_OG) {
+    niiFile = CONSTANTS.niiFileTest9;
+  } else if (CONSTANTS.SHOW_GBM) {
+    niiFile = CONSTANTS.niiFileTest0;
+  }
+
   useEffect(() => {
 
     // Classic ThreeJS setup
@@ -44,7 +52,7 @@ const Visualization3D = () => {
     // Load DICOM images and create AMI Helpers
     const loader = new AMI.VolumeLoader(container);
     loader
-      .load(CONSTANTS.niiFileTest0)
+      .load(niiFile)
       .then(() => {
         const series = loader.data[0].mergeSeries(loader.data);
         const stack = series[0].stack[0];
