@@ -13,7 +13,7 @@ const VisualizationComponent = dynamic(
 );
 
 function getPatient() {
-  return 'patient';
+  return 'Mary Jane';
 }
 
 export default function Page() {

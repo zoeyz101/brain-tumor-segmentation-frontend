@@ -1,4 +1,6 @@
-import React from 'react';
+'use client';
+
+import React, { use, useState } from 'react';
 import parse from 'html-react-parser';
 import './info-panel.css';
 import * as CONSTANTS from '../constants';
@@ -21,31 +23,61 @@ function InfoPanel() {
     ADDITIONAL_INFO = CONSTANTS.ADDITIONAL_INFO_GBM;
   }
 
+  const [showDiagnosisInfo, setShowDiagnosisInfo] = useState(false);
+  const [showAffectedAreas, setShowAffectedAreas] = useState(false);
+  const [showTreatmentOptions, setShowTreatmentOptions] = useState(false);
+  const [showAdditionalInfo, setShowAdditionalInfo] = useState(false);
+  
+  const toggleDiagnosisInfo = () => setShowDiagnosisInfo(showDiagnosisInfo => !showDiagnosisInfo);
+  const toggleAffectedAreas = () => setShowAffectedAreas(showAffectedAreas => !showAffectedAreas);
+  const toggleTreatmentOptions = () => setShowTreatmentOptions(showTreatmentOptions => !showTreatmentOptions);
+  const toggleAdditionalInfo = () => setShowAdditionalInfo(showAdditionalInfo => !showAdditionalInfo);
+
   return (
     <div>
       <div className='dropdown'>
-        <b>Diagnosis Information</b>
-        <div className='dropdown-content'>
-          <p>{ parse(DIAGNOSIS_INFO) }</p>
-        </div>
+        { !showDiagnosisInfo && (
+          <b className='dropdown-heading' onClick={toggleDiagnosisInfo}>Diagnosis Information &#x25BE;</b>
+        ) }
+        { showDiagnosisInfo && (
+          <div className='dropdown-content'>
+            <b className='dropdown-heading' onClick={toggleDiagnosisInfo}>Diagnosis Information &#x25B4;</b>
+            <p>{ parse(DIAGNOSIS_INFO) }</p>
+          </div>
+        ) }
       </div>
       <div className='dropdown'>
-        <b>Affected Areas</b>
-        <div className='dropdown-content'>
-          <p>{ parse(AFFECTED_AREAS) }</p>
+        { !showAffectedAreas && (
+          <b className='dropdown-heading' onClick={toggleAffectedAreas}>Affected Areas &#x25BE;</b>
+        ) }
+        { showAffectedAreas && (
+          <div className='dropdown-content'>
+            <b className='dropdown-heading' onClick={toggleAffectedAreas}>Affected Areas &#x25B4;</b>
+            <p>{ parse(AFFECTED_AREAS) }</p>
         </div>
+        ) }
       </div>
       <div className='dropdown'>
-        <b>Treatment Options</b>
-        <div className='dropdown-content'>
-          <p>{ parse(TREATMENT_OPTIONS) }</p>
+        { !showTreatmentOptions && (
+          <b className='dropdown-heading' onClick={toggleTreatmentOptions}>Treatment Options &#x25BE;</b>
+        ) }
+        { showTreatmentOptions && (
+          <div className='dropdown-content'>
+            <b className='dropdown-heading' onClick={toggleTreatmentOptions}>Treatment Options &#x25B4;</b>
+            <p>{ parse(TREATMENT_OPTIONS) }</p>
         </div>
+        ) }
       </div>
       <div className='dropdown'>
-        <b>Additional Information</b>
-        <div className='dropdown-content'>
-          <p>{ parse(ADDITIONAL_INFO) }</p>
-        </div>
+        { !showAdditionalInfo && (
+          <b className='dropdown-heading' onClick={toggleAdditionalInfo}>Additional Information &#x25BE;</b>
+        ) }
+        { showAdditionalInfo && (
+          <div className='dropdown-content'>
+            <b className='dropdown-heading' onClick={toggleAdditionalInfo}>Additional Information &#x25B4;</b>
+            <p>{ parse(ADDITIONAL_INFO) }</p>
+          </div>
+        ) }
       </div>
     </div>
   )
