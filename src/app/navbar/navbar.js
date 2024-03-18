@@ -27,8 +27,8 @@ function NavBar() {
         <li><b>NeuroMap</b></li>
         <li className='centre'><SearchBar /></li>
         <li className='right'>Dr. John Doe</li>
-        <li className='right' onClick={goToPatientCreation}>[Create New Patient]</li> 
-        <li className='right' onClick={goToPatientView}>[See Patient View]</li>
+        <li className='right btn' onClick={goToPatientCreation}>[Create New Patient]</li> 
+        <li className='right btn' onClick={goToPatientView}>[See Patient View]</li>
       </ul>
     </div>
   )

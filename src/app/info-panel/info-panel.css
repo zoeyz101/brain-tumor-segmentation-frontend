@@ -9,6 +9,10 @@
     display: block;
 }
 
+.dropdown-heading {
+    cursor: pointer;
+}
+
 /*
 .dropdown:hover .dropdown-content {
     display: block;

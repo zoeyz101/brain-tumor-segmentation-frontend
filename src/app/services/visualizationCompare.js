@@ -3,8 +3,28 @@
 import React, { useEffect } from 'react';
 import * as AMI from 'ami.js';
 import * as CONSTANTS from '../constants';
+import VisualizationLegend from './visualizationLegend';
 
 const VisualizationCompare = () => {
+  var niiFile = '';
+  var stlFile = '';
+  var wholeStlFile = '';
+  var coreStlFile = '';
+  var enhancedStlFile =  '';
+
+  if (CONSTANTS.SHOW_OG) {
+    niiFile = CONSTANTS.niiFileTest9;
+    stlFile = CONSTANTS.stlFile9;
+    wholeStlFile = CONSTANTS.wholeStlFile9;
+    coreStlFile = CONSTANTS.coreStlFile9;
+    enhancedStlFile =  CONSTANTS.enhancedStlFile9;
+  } else if (CONSTANTS.SHOW_GBM) {
+    niiFile = CONSTANTS.niiFileTest0;
+    stlFile = CONSTANTS.stlFile0;
+    wholeStlFile = CONSTANTS.wholeStlFile0;
+    coreStlFile = CONSTANTS.coreStlFile0;
+    enhancedStlFile =  CONSTANTS.enhancedStlFile0;
+  }
   
   useEffect(() => {
 
@@ -92,10 +112,11 @@ const VisualizationCompare = () => {
     particleLight.add(pointLight);
 
     // Load model and transform to LPS space
+    // whole tumour mesh
     const loaderSTL = new THREE.STLLoader();
-    loaderSTL.load(CONSTANTS.stlFile, geometry => {
+    loaderSTL.load(wholeStlFile, geometry => {
       const material = new THREE.MeshPhongMaterial({
-        color: 0xf44336,
+        color: 0x36F466, // green 
         specular: 0x111111,
         shininess: 200,
       });
@@ -108,10 +129,46 @@ const VisualizationCompare = () => {
       mesh.position.set(0, -235, 0);
     });
 
+    ///*
+    // core tumour mesh
+    loaderSTL.load(coreStlFile, geometry => {
+      const material = new THREE.MeshPhongMaterial({
+        color: 0x3655f4, // blue
+        specular: 0x111111,
+        shininess: 200,
+      });
+      const mesh = new THREE.Mesh(geometry, material);
+      // to LPS space
+      const RASToLPS = new THREE.Matrix4();
+      RASToLPS.set(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, -1, 0, 0, 0, 0, -1);
+      mesh.applyMatrix4(RASToLPS);
+      scene.add(mesh);
+      mesh.position.set(0, -235, 0);
+    });
+    //*/
+
+    ///*
+    // enhanced tumour mesh
+    loaderSTL.load(enhancedStlFile, geometry => {
+      const material = new THREE.MeshPhongMaterial({
+        color: 0xf44336, // red
+        specular: 0x111111,
+        shininess: 200,
+      });
+      const mesh = new THREE.Mesh(geometry, material);
+      // to LPS space
+      const RASToLPS = new THREE.Matrix4();
+      RASToLPS.set(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, -1, 0, 0, 0, 0, -1);
+      mesh.applyMatrix4(RASToLPS);
+      scene.add(mesh);
+      mesh.position.set(0, -235, 0);
+    });
+    //*/
+
     // Load DICOM data and setup the stack helper
     var loader = new AMI.VolumeLoader(container);
     loader
-      .load(CONSTANTS.niiFileTest)
+      .load(niiFile)
       .then(function() {
         const series = loader.data[0].mergeSeries(loader.data);
         const stack = series[0].stack[0];
@@ -271,6 +328,7 @@ const VisualizationCompare = () => {
 
   return (
     <div>
+      <VisualizationLegend />
       <div id='my-gui-container-compare-1'></div>
       <div id='container-1'></div>
       <div id='my-gui-container-compare-2'></div>

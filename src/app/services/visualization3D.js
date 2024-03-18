@@ -6,6 +6,14 @@ import * as AMI from 'ami.js';
 import * as CONSTANTS from '../constants';
 
 const Visualization3D = () => {
+  var niiFile = '';
+
+  if (CONSTANTS.SHOW_OG) {
+    niiFile = CONSTANTS.niiFileTest9;
+  } else if (CONSTANTS.SHOW_GBM) {
+    niiFile = CONSTANTS.niiFileTest0;
+  }
+
   useEffect(() => {
 
     // Classic ThreeJS setup
@@ -27,8 +35,8 @@ const Visualization3D = () => {
       1000
     );
     camera.position.x = 150;
-    camera.position.y = -75;
-    camera.position.z = 450;
+    camera.position.y = -100;
+    camera.position.z = 500;
 
     const controls = new AMI.TrackballControl(camera, container);
 
@@ -44,9 +52,7 @@ const Visualization3D = () => {
     // Load DICOM images and create AMI Helpers
     const loader = new AMI.VolumeLoader(container);
     loader
-      //.load(CONSTANTS.files)
-      //.load(CONSTANTS.niiFile)
-      .load(CONSTANTS.niiFileTest)
+      .load(niiFile)
       .then(() => {
         const series = loader.data[0].mergeSeries(loader.data);
         const stack = series[0].stack[0];
@@ -65,7 +71,7 @@ const Visualization3D = () => {
         const centerLPS = stackHelper.stack.worldCenter();
         camera.lookAt(centerLPS.x, centerLPS.y, centerLPS.z);
         camera.updateProjectionMatrix();
-        controls.target.set(centerLPS.x, centerLPS.y, centerLPS.z);
+        controls.target.set(centerLPS.x, centerLPS.y - 50, centerLPS.z);
       })
       .catch(error => {
         window.console.log('oops... something went wrong...');
