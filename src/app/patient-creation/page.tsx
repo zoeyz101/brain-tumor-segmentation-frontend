@@ -11,7 +11,6 @@ import * as CONSTANTS from '../constants';
 export default function Page() {
   const router = useRouter();
   const handleSubmit = (event: any) => {
-    event.preventDefault();
     createPatient();
     router.push(CONSTANTS.SEGMENTATION);
   }
@@ -43,11 +42,11 @@ export default function Page() {
     )
   };
 
-  const handleFileChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    if (event.target.files) {
-      setFormData({ ...formData, file: event.target.files[0] });
-    }
-  };
+  // const handleFileChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+  //   if (event.target.files) {
+  //     setFormData({ ...formData, file: event.target.files[0] });
+  //   }
+  // };
 
   const handleChange = (event: any) => {
     const name = event.target.name;
@@ -64,7 +63,7 @@ export default function Page() {
   return(
     <div className='create-patient'>
       <h1>Create New Patient</h1>
-      <form className="content-center w-full" action={createPatient}>
+      <form className="content-center w-full" action={handleSubmit}>
         <div className="patient-row">
           <div className="form-names">
             <label htmlFor="first-name">
@@ -102,7 +101,7 @@ export default function Page() {
           <label htmlFor='imageUpload'>
             Upload MRI Image (nifti)
           </label>
-          <input className='image-upload' type='file' id='imageUpload' accept=".nii, .nii.gz" multiple onChange={handleFiles} />
+          <input className='image-upload' type='file' id='imageUpload' accept=".nii, .gz" multiple onChange={handleFiles} />
         </div>
         <button disabled={disabled()}>
           Create Patient
