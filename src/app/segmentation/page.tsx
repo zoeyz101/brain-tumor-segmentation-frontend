@@ -2,7 +2,7 @@ import React from 'react';
 import dynamic from 'next/dynamic';
 import './segmentation.css';
 import ApproveSegButton from './approveSeg';
-
+import NavBar from '../navbar/navbar';
 const VisualizationComponent = dynamic(
   () => import('../services/visualizationCompare'),
   {
@@ -11,7 +11,8 @@ const VisualizationComponent = dynamic(
 );
 
 export default function Page() {
-  return <div>
+  return <>
+    <NavBar view="segmentation" />
     <h1>Approve Segmentation Images</h1>
     <div className='flex justify-center mb-7' id='seg-preview'>
       <input type='button' className='arrow-btn' value='&laquo;' aria-label='Previous' />
@@ -21,5 +22,5 @@ export default function Page() {
     <div className='flex justify-center'>
       <ApproveSegButton />
     </div>
-  </div>
+  </>
 }

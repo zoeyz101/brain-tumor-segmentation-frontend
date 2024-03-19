@@ -4,9 +4,10 @@ import React from 'react';
 import axios from 'axios';
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
-import { useFormStatus } from "react-dom";
+import Navbar from '../navbar/navbar';
 import './patient-creation.css';
 import * as CONSTANTS from '../constants';
+import { Nav } from 'react-bootstrap';
 
 export default function Page() {
   const router = useRouter();
@@ -61,6 +62,8 @@ export default function Page() {
   }
     
   return(
+    <>
+    <Navbar view="create"/>
     <div className='create-patient'>
       <h1>Create New Patient</h1>
       <form className="content-center w-full" action={handleSubmit}>
@@ -108,5 +111,7 @@ export default function Page() {
         </button>
       </form>
     </div>
+  </>
+
   )
 }
