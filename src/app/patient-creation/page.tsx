@@ -7,7 +7,6 @@ import { useRouter } from 'next/navigation';
 import Navbar from '../navbar/navbar';
 import './patient-creation.css';
 import * as CONSTANTS from '../constants';
-import { Nav } from 'react-bootstrap';
 
 export default function Page() {
   const router = useRouter();
@@ -33,7 +32,7 @@ export default function Page() {
   });
   const [fileData, setFileData] = useState(null);
 
-  function disabled() {
+  const disabled: () => boolean = () => {
      return (
       formData.firstName.trim() == '' ||
       formData.lastName.trim() == '' ||
@@ -63,7 +62,7 @@ export default function Page() {
     
   return(
     <>
-    <Navbar view="create"/>
+    <Navbar view="physician"/>
     <div className='create-patient'>
       <h1>Create New Patient</h1>
       <form className="content-center w-full" action={handleSubmit}>
