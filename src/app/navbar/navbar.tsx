@@ -38,7 +38,7 @@ const NavBar: React.FC<NavBarProps> = ({view, userList }) => {
   return (
     <div className='Navbar'>
       <div className='nav-left'>
-        <Image src={logo} width={50} height={50} alt='Logo'/>
+        <Image src={logo} width={60} height={50} alt='Logo'/>
         <p>NeuroMap</p>
         {/* {isPhysician? <SearchBar /> : null} */}
       </div>
