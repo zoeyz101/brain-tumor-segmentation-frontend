@@ -2,12 +2,104 @@
 
 import React from 'react';
 import axios from 'axios';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 import './patient-creation.css';
 import * as CONSTANTS from '../constants';
 
-function createPatient() {
+interface Patient {
+  firstName: string;
+  lastName: string;
+  email: string;
+  dob: string;
+  mriFile?: File;
+}
+
+const PatientForm: React.FC = () => {
+  const [patient, setPatient] = useState<Patient>({
+    firstName: '',
+    lastName: '',
+    email: '',
+    dob: '',
+    mriFile: undefined,
+  });
+
+  const [loading, setLoading] = useState<boolean>(false);
+  const [message, setMessage] = useState<string>('');
+  const [csrfToken, setCsrfToken] = useState<string>('');
+
+  useEffect(() => {
+    const fetchCsrfToken = async () => {
+      try {
+        const response = await axios.get('http://localhost:8000/csrf-token/');
+        const csrfToken = response.data.csrfToken;
+        setCsrfToken(csrfToken);
+      } catch (error) {
+        console.error('Error fetching CSRF token:', error);
+      }
+    };
+    fetchCsrfToken();
+  }, []);
+
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const { name, value } = e.target;
+    setPatient({ ...patient, [name]: value });
+  };
+
+  const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files && e.target.files[0];
+    setPatient({ ...patient, mriFile: file || undefined });
+  };
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setLoading(true);
+    setMessage('');
+
+    try {
+      const formData = new FormData();
+      formData.append('firstName', patient.firstName);
+      formData.append('lastName', patient.lastName);
+      formData.append('email', patient.email);
+      formData.append('dob', patient.dob);
+      if (patient.mriFile) {
+        formData.append('mriFile', patient.mriFile);
+      }
+
+      const response = await axios.post('http://localhost:8000', formData, {
+        headers: {
+          'Content-Type': 'multipart/form-data',
+          'X-CSRFToken': csrfToken,
+        },
+      });
+      console.log(response.data);
+      setMessage('Patient created successfully!');
+    } catch (error) {
+      console.error('Error submitting patient data:', error);
+      setMessage('Error creating patient. Please try again.');
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  return (
+    <div>
+      <form onSubmit={handleSubmit}>
+        <input type="text" name="firstName" placeholder="First Name" value={patient.firstName} onChange={handleInputChange} />
+        <input type="text" name="lastName" placeholder="Last Name" value={patient.lastName} onChange={handleInputChange} />
+        <input type="email" name="email" placeholder="Email" value={patient.email} onChange={handleInputChange} />
+        <input type="date" name="dob" placeholder="Date of Birth" value={patient.dob} onChange={handleInputChange} />
+        <input type="file" name="mriFile" onChange={handleFileChange} />
+        <button type="submit" disabled={loading}>Create Patient</button>
+      </form>
+      {loading && <p>Loading...</p>}
+      {message && <p>{message}</p>}
+    </div>
+  );
+};
+
+export default PatientForm;
+/*function createPatient() {
   console.log('Sending patient creation request');
   axios
     .get(CONSTANTS.API + CONSTANTS.EXAMPLES)
@@ -124,3 +216,4 @@ function Page() {
 }
 
 export default Page;
+*/
