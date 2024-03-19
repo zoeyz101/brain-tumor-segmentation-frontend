@@ -59,11 +59,11 @@ const NavBar: React.FC<NavBarProps> = ({view, userList }) => {
         {
           isPatient ? (
             <>
-              <li> 
-                <a onClick={goToPhysicianView}>[Return to Physician View] </a>
-              </li>
               <li>
-                <a>Send to Patient </a>
+                <button className='nav-button'>Send to Patient </button>
+              </li>
+              <li> 
+                <a onClick={goToPhysicianView}>Return to Physician View </a>
               </li>
           </>)
           : null
