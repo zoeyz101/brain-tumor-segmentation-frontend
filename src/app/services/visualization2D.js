@@ -182,6 +182,8 @@ const Visualization2D = () => {
         .step(1)
         .listen();
       stackFolder.open();
+
+      gui.close();
     };
 
   });

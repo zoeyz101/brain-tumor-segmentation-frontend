@@ -288,6 +288,9 @@ const VisualizationCompareT1N = () => {
       borderFolder_base.add(stackHelper_base.border, 'visible');
       borderFolder_base.addColor(stackHelper_base.border, 'color');
       borderFolder_base.open();
+
+      gui.close();
+      gui_base.close();
     };
 
   });

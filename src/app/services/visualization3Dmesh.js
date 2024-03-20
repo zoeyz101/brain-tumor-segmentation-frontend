@@ -215,6 +215,8 @@ const Visualization3DMesh = () => {
       borderFolder.add(stackHelper.border, 'visible');
       borderFolder.addColor(stackHelper.border, 'color');
       borderFolder.open();
+
+      gui.close();
     };
 
   });

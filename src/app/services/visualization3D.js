@@ -122,6 +122,8 @@ const Visualization3D = () => {
       borderFolder.add(stackHelper.border, 'visible');
       borderFolder.addColor(stackHelper.border, 'color');
       borderFolder.open();
+
+      gui.close();
     };
 
   });
