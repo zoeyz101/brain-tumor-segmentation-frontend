@@ -69,7 +69,7 @@ const Visualization2D = () => {
 
         gui(stackHelper);
 
-        // center camera and interactor to center of bouding box
+        // center camera and interactor to center of bounding box
         // for nicer experience
         // set camera
         const worldbb = stack.worldBoundingBox();

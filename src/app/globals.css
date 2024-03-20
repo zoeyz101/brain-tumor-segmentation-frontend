@@ -109,10 +109,10 @@ form label {
 }
 
 #my-gui-container {
-  width: 200px;
+  width: 13rem;
   position: fixed;
-  top: 100px;
-  right: 10px;
+  top: 3.5rem;
+  right: 2rem;
   z-index: 1;
 }
 
