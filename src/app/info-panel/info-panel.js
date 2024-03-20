@@ -1,6 +1,6 @@
 'use client';
 
-import React, { use, useState } from 'react';
+import React, { useState } from 'react';
 import parse from 'html-react-parser';
 import './info-panel.css';
 import * as CONSTANTS from '../constants';

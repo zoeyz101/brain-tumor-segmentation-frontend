@@ -34,6 +34,15 @@ h1 {
   text-align: center;
 }
 
+h2 {
+  color: #000000;
+  font-size: medium;
+  font-weight: bold;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  text-align: center;
+}
+
 div {
   width: 100%;
 }

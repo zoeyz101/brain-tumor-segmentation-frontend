@@ -5,7 +5,7 @@ import * as AMI from 'ami.js';
 import * as CONSTANTS from '../constants';
 import VisualizationLegend from './visualizationLegend';
 
-const VisualizationCompare = () => {
+const VisualizationCompareT1N = () => {
   var niiFile = '';
   var stlFile = '';
   var wholeStlFile = '';
@@ -13,13 +13,13 @@ const VisualizationCompare = () => {
   var enhancedStlFile =  '';
 
   if (CONSTANTS.SHOW_OG) {
-    niiFile = CONSTANTS.niiFileTest9;
+    niiFile = CONSTANTS.niiFileT1N9;
     stlFile = CONSTANTS.stlFile9;
     wholeStlFile = CONSTANTS.wholeStlFile9;
     coreStlFile = CONSTANTS.coreStlFile9;
     enhancedStlFile =  CONSTANTS.enhancedStlFile9;
   } else if (CONSTANTS.SHOW_GBM) {
-    niiFile = CONSTANTS.niiFileTest0;
+    niiFile = CONSTANTS.niiFileT1N0;
     stlFile = CONSTANTS.stlFile0;
     wholeStlFile = CONSTANTS.wholeStlFile0;
     coreStlFile = CONSTANTS.coreStlFile0;
@@ -337,5 +337,5 @@ const VisualizationCompare = () => {
   );
 };
   
-export default VisualizationCompare;
+export default VisualizationCompareT1N;
   
