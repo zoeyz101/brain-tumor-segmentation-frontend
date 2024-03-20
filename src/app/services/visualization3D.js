@@ -108,15 +108,6 @@ const Visualization3D = () => {
 
       // slice
       const sliceFolder = gui.addFolder('Slice');
-      sliceFolder
-        .add(stackHelper.slice, 'windowWidth', 1, stack.minMax[1] - stack.minMax[0])
-        .step(1)
-        .listen();
-      sliceFolder
-        .add(stackHelper.slice, 'windowCenter', stack.minMax[0], stack.minMax[1])
-        .step(1)
-        .listen();
-      sliceFolder.add(stackHelper.slice, 'intensityAuto').listen();
       sliceFolder.add(stackHelper.slice, 'invert');
       sliceFolder.open();
 

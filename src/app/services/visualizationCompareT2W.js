@@ -260,28 +260,10 @@ const VisualizationCompareT2W = () => {
 
       // slice
       const sliceFolder = gui.addFolder('Slice');
-      sliceFolder
-        .add(stackHelper.slice, 'windowWidth', 1, stack.minMax[1] - stack.minMax[0])
-        .step(1)
-        .listen();
-      sliceFolder
-        .add(stackHelper.slice, 'windowCenter', stack.minMax[0], stack.minMax[1])
-        .step(1)
-        .listen();
-      sliceFolder.add(stackHelper.slice, 'intensityAuto').listen();
       sliceFolder.add(stackHelper.slice, 'invert');
       sliceFolder.open();
 
       const sliceFolder_base = gui_base.addFolder('Slice');
-      sliceFolder_base
-        .add(stackHelper_base.slice, 'windowWidth', 1, stack_base.minMax[1] - stack_base.minMax[0])
-        .step(1)
-        .listen();
-      sliceFolder_base
-        .add(stackHelper_base.slice, 'windowCenter', stack_base.minMax[0], stack_base.minMax[1])
-        .step(1)
-        .listen();
-      sliceFolder_base.add(stackHelper_base.slice, 'intensityAuto').listen();
       sliceFolder_base.add(stackHelper_base.slice, 'invert');
       sliceFolder_base.open();
 
