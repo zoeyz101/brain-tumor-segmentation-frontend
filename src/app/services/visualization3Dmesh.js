@@ -192,19 +192,11 @@ const Visualization3DMesh = () => {
 
       // stack
       const stackFolder = gui.addFolder('Stack');
-      // index range depends on stackHelper orientation.
+      // index range depends on stackHelper orientation
       const index = stackFolder
         .add(stackHelper, 'index', 0, stack.dimensionsIJK.z - 1)
         .step(1)
         .listen();
-      const orientation = stackFolder
-        .add(stackHelper, 'orientation', 0, 2)
-        .step(1)
-        .listen();
-      orientation.onChange(value => {
-        index.__max = stackHelper.orientationMaxIndex;
-        stackHelper.index = Math.floor(index.__max / 2);
-      });
       stackFolder.open();
 
       // slice

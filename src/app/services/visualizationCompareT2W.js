@@ -244,19 +244,11 @@ const VisualizationCompareT2W = () => {
 
       // stack
       const stackFolder = gui.addFolder('Stack');
-      // index range depends on stackHelper orientation.
+      // index range depends on stackHelper orientation
       const index = stackFolder
         .add(stackHelper, 'index', 0, stack.dimensionsIJK.z - 1)
         .step(1)
         .listen();
-      const orientation = stackFolder
-        .add(stackHelper, 'orientation', 0, 2)
-        .step(1)
-        .listen();
-      orientation.onChange(value => {
-        index.__max = stackHelper.orientationMaxIndex;
-        stackHelper.index = Math.floor(index.__max / 2);
-      });
       stackFolder.open();
 
       const stackFolder_base = gui_base.addFolder('Stack');
@@ -264,14 +256,6 @@ const VisualizationCompareT2W = () => {
         .add(stackHelper_base, 'index', 0, stack_base.dimensionsIJK.z - 1)
         .step(1)
         .listen();
-      const orientation_base = stackFolder_base
-        .add(stackHelper_base, 'orientation', 0, 2)
-        .step(1)
-        .listen();
-      orientation_base.onChange(value => {
-        index_base.__max = stackHelper_base.orientationMaxIndex;
-        stackHelper_base.index = Math.floor(index_base.__max / 2);
-      });
       stackFolder_base.open();
 
       // slice
