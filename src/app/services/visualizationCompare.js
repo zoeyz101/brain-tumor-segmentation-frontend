@@ -165,7 +165,7 @@ const VisualizationCompare = () => {
     });
     //*/
 
-    // Load DICOM data and setup the stack helper
+    // Load NIFTI data and setup the stack helper
     var loader = new AMI.VolumeLoader(container);
     loader
       .load(niiFile)

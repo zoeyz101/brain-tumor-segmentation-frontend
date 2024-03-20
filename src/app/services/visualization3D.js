@@ -49,7 +49,7 @@ const Visualization3D = () => {
 
     window.addEventListener('resize', onWindowResize, false);
 
-    // Load DICOM images and create AMI Helpers
+    // Load NIFTI images and create AMI Helpers
     const loader = new AMI.VolumeLoader(container);
     loader
       .load(niiFile)
