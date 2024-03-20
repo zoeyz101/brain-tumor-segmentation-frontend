@@ -12,6 +12,7 @@ const VisualizationCompareT1C = () => {
   var coreStlFile = '';
   var enhancedStlFile =  '';
 
+  // TODO: update to use backend for visualizer 
   if (CONSTANTS.SHOW_OG) {
     niiFile = CONSTANTS.niiFileT1C9;
     stlFile = CONSTANTS.stlFile9;

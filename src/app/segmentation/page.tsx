@@ -4,6 +4,7 @@ import React, { useState } from 'react';
 import dynamic from 'next/dynamic';
 import './segmentation.css';
 import ApproveSegButton from './approveSeg';
+import NavBar from '../navbar/navbar';
 import * as CONSTANTS from '../constants';
 
 const VisualizationComponentT1C = dynamic(
@@ -61,7 +62,8 @@ export default function Page() {
     }
   };
 
-  return <div>
+  return <>
+    <NavBar view="segmentation" />
     <h1>Approve Segmentation Images</h1>
     <h2>Modality: {modality}</h2>
     <div className='flex justify-center mb-7' id='seg-preview'>
@@ -83,5 +85,5 @@ export default function Page() {
     <div className='flex justify-center'>
       <ApproveSegButton />
     </div>
-  </div>
+  </>
 }
