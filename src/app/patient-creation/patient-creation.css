@@ -6,10 +6,69 @@ h1 {
     color: var(--dark-accent-color);
 }
 
+button {
+    background: var(--dark-accent-color);
+    color: #ffffff;
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    &:hover {
+        background: var(--light-accent-color);
+        color: #000;
+        border: 1px solid var(--dark-accent-color);
+    }
+}
+button:disabled {
+    background-color: #d3d3d3; /* Light gray */
+    color: #808080; /* Dark gray */
+    cursor: not-allowed;
+  }
+
 label {
     color: var(--dark-accent-color);
 }
 
 .create-patient {
-    background: var(--light-button-color);
+    padding: 2rem;
+
+    .patient-row {
+        display: flex;
+        flex-wrap: wrap;
+        margin-bottom: 1rem;
+        justify-content: space-between;
+    }
+    .image-upload {
+        border: 0;
+        padding: 1rem 0;
+        color: black;
+        border-radius: 0;
+        &:focus {
+            border: 1.5px solid var(--light-accent-color);
+        }
+    }
+
+    .form-names {
+        width: 48%;
+        display: flex;
+        flex-wrap: wrap;
+    }
+    label {
+        padding-left: 0.2rem;
+        font-weight: 600;
+        color: rgb(66, 66, 66);
+    }
+    
+    input {
+        padding: 0.5rem;
+        color: black;
+        border: 1px solid rgb(159 163 171);
+        border-radius: 0.5rem;
+        margin: 0.5rem 0;
+        &:focus {
+            border: 1.5px solid var(--light-accent-color);
+        }
+    }
 }
+
