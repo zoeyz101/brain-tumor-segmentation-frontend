@@ -8,9 +8,9 @@ const Visualization2D = () => {
   var niiFile = '';
 
   if (CONSTANTS.SHOW_OG) {
-    niiFile = CONSTANTS.niiFileTest9;
+    niiFile = CONSTANTS.niiFileT2F9;
   } else if (CONSTANTS.SHOW_GBM) {
-    niiFile = CONSTANTS.niiFileTest0;
+    niiFile = CONSTANTS.niiFileT2F0;
   }
 
   useEffect(() => {
