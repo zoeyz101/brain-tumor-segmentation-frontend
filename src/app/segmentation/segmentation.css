@@ -3,3 +3,21 @@
     margin: 0 30px;
     font-size: 75px;
 }
+input{ 
+    color: black;
+}
+
+button {
+    background: var(--dark-accent-color);
+    color: #ffffff;
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    &:hover {
+        background: var(--light-accent-color);
+        color: #000;
+        border: 1px solid var(--dark-accent-color);
+    }
+}

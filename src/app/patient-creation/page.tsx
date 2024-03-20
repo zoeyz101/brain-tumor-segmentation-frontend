@@ -4,7 +4,7 @@ import React from 'react';
 import axios from 'axios';
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
-import { useFormStatus } from "react-dom";
+import Navbar from '../navbar/navbar';
 import './patient-creation.css';
 import * as CONSTANTS from '../constants';
 
@@ -32,7 +32,7 @@ export default function Page() {
   });
   const [fileData, setFileData] = useState(null);
 
-  function disabled() {
+  const disabled: () => boolean = () => {
      return (
       formData.firstName.trim() == '' ||
       formData.lastName.trim() == '' ||
@@ -61,6 +61,8 @@ export default function Page() {
   }
     
   return(
+    <>
+    <Navbar view="physician"/>
     <div className='create-patient'>
       <h1>Create New Patient</h1>
       <form className="content-center w-full" action={handleSubmit}>
@@ -108,5 +110,7 @@ export default function Page() {
         </button>
       </form>
     </div>
+  </>
+
   )
 }
