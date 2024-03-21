@@ -29,8 +29,6 @@ h1 {
   color: #000000;
   font-size: x-large;
   font-weight: bold;
-  padding-top: 50px;
-  padding-bottom: 30px;
   text-align: center;
 }
 
@@ -87,7 +85,7 @@ form label {
   /*position: relative;*/
   float: left;
   width: 50%;
-  height: 700px;
+  height: 35rem;
   padding: 10px;
   overflow: hidden;
   z-index: 0;
@@ -102,7 +100,7 @@ form label {
   /*position: relative;*/
   float: left;
   width: 50%;
-  height: 700px;
+  height: 35rem;
   padding: 10px;
   overflow: hidden;
   z-index: 0;
@@ -112,23 +110,23 @@ form label {
   width: 13rem;
   position: absolute;
   top: 4rem;
-  right: 2rem;
+  right: 2.5rem;
   z-index: 1;
 }
 
 #my-gui-container-compare-1 {
   width: 10rem;
   position: absolute;
-  top: 14rem;
-  right: 13.5rem;
+  top: 10.5rem;
+  right: 12.7rem;
   z-index: 1;
 }
 
 #my-gui-container-compare-2 {
   width: 10rem;
   position: absolute;
-  top: 14rem;
-  left: 32.5rem;
+  top: 10.5rem;
+  left: 32rem;
   z-index: 1;
 }
 
@@ -148,6 +146,11 @@ form label {
 
 .dg ul {
   display: block !important;
+  width: 230px !important;
+}
+
+.dg .close-button {
+  width: 230px !important;
 }
 
 li.folder {

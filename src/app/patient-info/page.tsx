@@ -17,6 +17,7 @@ export default function Page() {
       <NavBar view="patient"/>
       <div className='grid lg:w-full lg:mb-0'>
         <div className='text'>
+          <b>Welcome Mary Jane</b>
           <InfoPanel />
         </div>
         <VisualizationComponent />

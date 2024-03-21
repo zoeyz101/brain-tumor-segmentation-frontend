@@ -65,7 +65,7 @@ export default function Page() {
   return <>
     <NavBar view="segmentation" />
     <h1>Approve Segmentation Images</h1>
-    <h2>Modality: {modality}</h2>
+    <h2>Modality: {modality} (click left or right to switch modalities)</h2>
     <div className='flex justify-center mb-7' id='seg-preview'>
       <input type='button' className='btn' value='&laquo;' aria-label='Previous' onClick={prevModality} />
       { modality==CONSTANTS.T1C && (

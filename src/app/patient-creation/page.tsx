@@ -99,7 +99,7 @@ export default function Page() {
             onChange={ handleChange }
           />
         </div>
-        <div>
+        <div className='uploadMRI'>
           <label htmlFor='imageUpload'>
             Upload MRI Image (nifti)
           </label>
