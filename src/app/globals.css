@@ -110,7 +110,7 @@ form label {
 
 #my-gui-container {
   width: 13rem;
-  position: fixed;
+  position: absolute;
   top: 4rem;
   right: 2rem;
   z-index: 1;
@@ -133,19 +133,23 @@ form label {
 }
 
 #legend {
-  width: 200px;
-  position: fixed;
+  width: 12.5rem;
+  position: absolute;
   z-index: 1;
   font-size: small;
   color: #ffffff;
-  padding-left: 10px;
-  padding-top: 5px;
-}
-
-.dg ul {
-  width: 245px !important;
+  padding-left: 0.5rem;
+  padding-top: 0.5rem;
 }
 
 .btn {
   cursor: pointer;
+}
+
+.dg ul {
+  display: block !important;
+}
+
+li.folder {
+  margin: 0 !important;
 }
