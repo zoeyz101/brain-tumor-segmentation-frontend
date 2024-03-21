@@ -34,7 +34,7 @@ function InfoPanel() {
   const toggleAdditionalInfo = () => setShowAdditionalInfo(showAdditionalInfo => !showAdditionalInfo);
 
   return (
-    <div>
+    <div className='info-panel'>
       <div className='dropdown'>
         { !showDiagnosisInfo && (
           <div className='dropdown-heading' onClick={toggleDiagnosisInfo}><b>Diagnosis Information</b><b>&#x25BE;</b></div>

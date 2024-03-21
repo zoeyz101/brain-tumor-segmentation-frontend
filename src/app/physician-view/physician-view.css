@@ -1,5 +1,5 @@
 .physician-view {
-    overflow-y: hidden !important;
+    overflow-x: hidden !important;
 }
 .grid {
     grid-template-columns: 4fr 6fr;
