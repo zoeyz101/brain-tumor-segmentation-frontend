@@ -20,7 +20,7 @@ export default function Page() {
   
   return (
     <div>
-      <NavBar />
+      <NavBar view='physician' />
       <div className='grid lg:w-full lg:mb-0'>
         <div className='text'>
           <div className='patient-header'>

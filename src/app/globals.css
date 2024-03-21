@@ -111,24 +111,24 @@ form label {
 #my-gui-container {
   width: 13rem;
   position: fixed;
-  top: 3.5rem;
+  top: 4rem;
   right: 2rem;
   z-index: 1;
 }
 
 #my-gui-container-compare-1 {
-  width: 150px;
+  width: 10rem;
   position: absolute;
-  top: 10rem;
-  right: 235px;
+  top: 14rem;
+  right: 13.5rem;
   z-index: 1;
 }
 
 #my-gui-container-compare-2 {
-  width: 150px;
+  width: 10rem;
   position: absolute;
-  top: 10rem;
-  left: 525px;
+  top: 14rem;
+  left: 32.5rem;
   z-index: 1;
 }
 
@@ -142,8 +142,8 @@ form label {
   padding-top: 5px;
 }
 
-.dg li {
-  padding-bottom: 20px;
+.dg ul {
+  width: 245px !important;
 }
 
 .btn {
