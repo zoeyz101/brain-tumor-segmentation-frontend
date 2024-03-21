@@ -5,7 +5,7 @@ import * as AMI from 'ami.js';
 import * as CONSTANTS from '../constants';
 import VisualizationLegend from './visualizationLegend';
 
-const Visualization3DMesh = () => {
+const VisualizationCompareT1N = () => {
   var niiFile = '';
   var stlFile = '';
   var wholeStlFile = '';
@@ -13,13 +13,13 @@ const Visualization3DMesh = () => {
   var enhancedStlFile =  '';
 
   if (CONSTANTS.SHOW_OG) {
-    niiFile = CONSTANTS.niiFileT2F9;
+    niiFile = CONSTANTS.niiFileT1N9;
     stlFile = CONSTANTS.stlFile9;
     wholeStlFile = CONSTANTS.wholeStlFile9;
     coreStlFile = CONSTANTS.coreStlFile9;
     enhancedStlFile =  CONSTANTS.enhancedStlFile9;
   } else if (CONSTANTS.SHOW_GBM) {
-    niiFile = CONSTANTS.niiFileT2F0;
+    niiFile = CONSTANTS.niiFileT1N0;
     stlFile = CONSTANTS.stlFile0;
     wholeStlFile = CONSTANTS.wholeStlFile0;
     coreStlFile = CONSTANTS.coreStlFile0;
@@ -29,7 +29,9 @@ const Visualization3DMesh = () => {
   useEffect(() => {
 
     // Classic ThreeJS setup
-    const container = document.getElementById('container');
+    const container = document.getElementById('container-2');
+    const container_base = document.getElementById('container-1');
+    
     var renderer = new THREE.WebGLRenderer({
       antialias: true,
     });
@@ -38,7 +40,16 @@ const Visualization3DMesh = () => {
     renderer.setPixelRatio(window.devicePixelRatio);
     container.appendChild(renderer.domElement);
 
+    var renderer_base = new THREE.WebGLRenderer({
+      antialias: true,
+    });
+    renderer_base.setSize(container_base.offsetWidth, container_base.offsetHeight);
+    renderer_base.setClearColor(CONSTANTS.colors.darkGrey, 1);
+    renderer_base.setPixelRatio(window.devicePixelRatio);
+    container_base.appendChild(renderer_base.domElement);
+
     const scene = new THREE.Scene();
+    const scene_base = new THREE.Scene();
 
     const camera = new THREE.PerspectiveCamera(
       45,
@@ -47,21 +58,38 @@ const Visualization3DMesh = () => {
       1000
     );
     camera.position.x = 150;
-    camera.position.y = -75;
-    camera.position.z = 600;
+    camera.position.y = -50;
+    camera.position.z = 750;
+
+    const camera_base = new THREE.PerspectiveCamera(
+      45,
+      container_base.offsetWidth / container_base.offsetHeight,
+      0.1,
+      1000
+    );
+    camera_base.position.x = 150;
+    camera_base.position.y = -50;
+    camera_base.position.z = 750;
 
     // add axes
     // x axis is red, y axis is green, z axis is blue
     const axesHelper = new THREE.AxesHelper(25);
     scene.add(axesHelper);
 
+    const axesHelper_base = new THREE.AxesHelper(25);
+    scene_base.add(axesHelper_base);
+
     const controls = new AMI.TrackballControl(camera, container);
+    const controls_base = new AMI.TrackballControl(camera_base, container_base);
 
     const onWindowResize = () => {
       camera.aspect = container.offsetWidth / container.offsetHeight;
       camera.updateProjectionMatrix();
-
       renderer.setSize(container.offsetWidth, container.offsetHeight);
+
+      camera_base.aspect = container_base.offsetWidth / container_base.offsetHeight;
+      camera_base.updateProjectionMatrix();
+      renderer_base.setSize(container_base.offsetWidth, container_base.offsetHeight);
     };
     window.addEventListener('resize', onWindowResize, false);
 
@@ -88,7 +116,7 @@ const Visualization3DMesh = () => {
     const loaderSTL = new THREE.STLLoader();
     loaderSTL.load(wholeStlFile, geometry => {
       const material = new THREE.MeshPhongMaterial({
-        color: 0x36f466, // green 
+        color: 0x36F466, // green 
         specular: 0x111111,
         shininess: 200,
       });
@@ -144,19 +172,32 @@ const Visualization3DMesh = () => {
       .then(function() {
         const series = loader.data[0].mergeSeries(loader.data);
         const stack = series[0].stack[0];
+
+        const series_base = loader.data[0].mergeSeries(loader.data);
+        const stack_base = series_base[0].stack[0];
+
         loader.free();
 
         const stackHelper = new AMI.StackHelper(stack);
         stackHelper.border.color = CONSTANTS.colors.red;
         scene.add(stackHelper);
 
+        const stackHelper_base = new AMI.StackHelper(stack_base);
+        stackHelper_base.border.color = CONSTANTS.colors.red;
+        scene_base.add(stackHelper_base);
+
         // build gui
-        gui(stackHelper);
+        gui(stackHelper, stackHelper_base);
 
         const centerLPS = stackHelper.stack.worldCenter();
         camera.lookAt(centerLPS.x, centerLPS.y, centerLPS.z);
         camera.updateProjectionMatrix();
-        controls.target.set(centerLPS.x, centerLPS.y - 50, centerLPS.z);
+        controls.target.set(centerLPS.x, centerLPS.y, centerLPS.z);
+
+        const centerLPS_base = stackHelper_base.stack.worldCenter();
+        camera_base.lookAt(centerLPS_base.x, centerLPS_base.y, centerLPS_base.z);
+        camera_base.updateProjectionMatrix();
+        controls_base.target.set(centerLPS_base.x, centerLPS_base.y, centerLPS_base.z);
 
         particleLight.position.set(centerLPS.x, centerLPS.y, centerLPS.z);
       })
@@ -175,6 +216,9 @@ const Visualization3DMesh = () => {
       controls.update();
       renderer.render(scene, camera);
 
+      controls_base.update();
+      renderer_base.render(scene_base, camera_base);
+
       requestAnimationFrame(function() {
         animate();
       });
@@ -182,13 +226,21 @@ const Visualization3DMesh = () => {
     animate();
 
     // setup gui
-    const gui = stackHelper => {
+    const gui = (stackHelper, stackHelper_base) => {
       const stack = stackHelper.stack;
+      const stack_base = stackHelper_base.stack;
+
       const gui = new dat.GUI({
         autoPlace: false,
       });
-      const customContainer = document.getElementById('my-gui-container');
+      const customContainer = document.getElementById('my-gui-container-compare-1');
       customContainer.appendChild(gui.domElement);
+
+      const gui_base = new dat.GUI({
+        autoPlace: false,
+      });
+      const customContainer_base = document.getElementById('my-gui-container-compare-2');
+      customContainer_base.appendChild(gui_base.domElement);
 
       // stack
       const stackFolder = gui.addFolder('Stack');
@@ -199,10 +251,21 @@ const Visualization3DMesh = () => {
         .listen();
       stackFolder.open();
 
+      const stackFolder_base = gui_base.addFolder('Stack');
+      const index_base = stackFolder_base
+        .add(stackHelper_base, 'index', 0, stack_base.dimensionsIJK.z - 1)
+        .step(1)
+        .listen();
+      stackFolder_base.open();
+
       // slice
       const sliceFolder = gui.addFolder('Slice');
       sliceFolder.add(stackHelper.slice, 'invert');
       sliceFolder.open();
+
+      const sliceFolder_base = gui_base.addFolder('Slice');
+      sliceFolder_base.add(stackHelper_base.slice, 'invert');
+      sliceFolder_base.open();
 
       // bbox
       const bboxFolder = gui.addFolder('Bounding Box');
@@ -210,13 +273,24 @@ const Visualization3DMesh = () => {
       bboxFolder.addColor(stackHelper.bbox, 'color');
       bboxFolder.open();
 
+      const bboxFolder_base = gui_base.addFolder('Bounding Box');
+      bboxFolder_base.add(stackHelper_base.bbox, 'visible');
+      bboxFolder_base.addColor(stackHelper_base.bbox, 'color');
+      bboxFolder_base.open();
+
       // border
       const borderFolder = gui.addFolder('Border');
       borderFolder.add(stackHelper.border, 'visible');
       borderFolder.addColor(stackHelper.border, 'color');
       borderFolder.open();
 
+      const borderFolder_base = gui_base.addFolder('Border');
+      borderFolder_base.add(stackHelper_base.border, 'visible');
+      borderFolder_base.addColor(stackHelper_base.border, 'color');
+      borderFolder_base.open();
+
       gui.close();
+      gui_base.close();
     };
 
   });
@@ -224,11 +298,13 @@ const Visualization3DMesh = () => {
   return (
     <div>
       <VisualizationLegend />
-      <div id='my-gui-container'></div>
-      <div id='container'></div>
+      <div id='my-gui-container-compare-1'></div>
+      <div id='container-1'></div>
+      <div id='my-gui-container-compare-2'></div>
+      <div id='container-2'></div>
     </div>
   );
 };
   
-export default Visualization3DMesh;
+export default VisualizationCompareT1N;
   

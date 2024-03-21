@@ -34,6 +34,15 @@ h1 {
   text-align: center;
 }
 
+h2 {
+  color: #000000;
+  font-size: medium;
+  font-weight: bold;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  text-align: center;
+}
+
 div {
   width: 100%;
 }
@@ -100,43 +109,47 @@ form label {
 }
 
 #my-gui-container {
-  width: 200px;
-  position: fixed;
-  top: 100px;
-  right: 10px;
+  width: 13rem;
+  position: absolute;
+  top: 4rem;
+  right: 2rem;
   z-index: 1;
 }
 
 #my-gui-container-compare-1 {
-  width: 150px;
+  width: 10rem;
   position: absolute;
-  top: 125px;
-  right: 235px;
+  top: 14rem;
+  right: 13.5rem;
   z-index: 1;
 }
 
 #my-gui-container-compare-2 {
-  width: 150px;
+  width: 10rem;
   position: absolute;
-  top: 125px;
-  left: 525px;
+  top: 14rem;
+  left: 32.5rem;
   z-index: 1;
 }
 
 #legend {
-  width: 200px;
-  position: fixed;
+  width: 12.5rem;
+  position: absolute;
   z-index: 1;
   font-size: small;
   color: #ffffff;
-  padding-left: 10px;
-  padding-top: 5px;
-}
-
-.dg li {
-  padding-bottom: 20px;
+  padding-left: 0.5rem;
+  padding-top: 0.5rem;
 }
 
 .btn {
   cursor: pointer;
+}
+
+.dg ul {
+  display: block !important;
+}
+
+li.folder {
+  margin: 0 !important;
 }

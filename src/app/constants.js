@@ -92,20 +92,36 @@ export const colors = {
     darkGrey: 0x353535,
 };
 
-export const niiFileTest0 = 'https://cdn.rawgit.com/y-ng/capstone_nifti_test/master/00000/BraTS-GLI-00000-000-t2f.nii.gz'
-export const stlFile0 = 'https://cdn.rawgit.com/y-ng/capstone_nifti_test/master/00000/BraTS-GLI-00000-000-seg.stl'
-export const wholeStlFile0 = 'https://cdn.rawgit.com/y-ng/capstone_nifti_test/master/00000/BraTS-GLI-00000-000-seg-whole.stl'
-export const coreStlFile0 = 'https://cdn.rawgit.com/y-ng/capstone_nifti_test/master/00000/BraTS-GLI-00000-000-seg-core.stl'
-export const enhancedStlFile0 = 'https://cdn.rawgit.com/y-ng/capstone_nifti_test/master/00000/BraTS-GLI-00000-000-seg-enhanced.stl'
+// Modality constants
+export const T1C = 't1c';
+export const T1N = 't1n';
+export const T2F = 't2f';
+export const T2W = 't2w';
 
-export const niiFileTest3 = 'https://cdn.rawgit.com/y-ng/capstone_nifti_test/master/00003/BraTS-GLI-00003-000-t2f.nii.gz'
-export const stlFile3 = 'https://cdn.rawgit.com/y-ng/capstone_nifti_test/master/00003/BraTS-GLI-00003-000-seg.stl'
-export const wholeStlFile3 = 'https://cdn.rawgit.com/y-ng/capstone_nifti_test/master/00003/BraTS-GLI-00003-000-seg-whole.stl'
-export const coreStlFile3 = 'https://cdn.rawgit.com/y-ng/capstone_nifti_test/master/00003/BraTS-GLI-00003-000-seg-core.stl'
-export const enhancedStlFile3 = 'https://cdn.rawgit.com/y-ng/capstone_nifti_test/master/00003/BraTS-GLI-00003-000-seg-enhanced.stl'
+// NIFTI files
+export const niiFileT1C0 = 'https://cdn.rawgit.com/y-ng/capstone_nifti_test/master/00000/BraTS-GLI-00000-000-t1c.nii.gz';
+export const niiFileT1N0 = 'https://cdn.rawgit.com/y-ng/capstone_nifti_test/master/00000/BraTS-GLI-00000-000-t1n.nii.gz';
+export const niiFileT2F0 = 'https://cdn.rawgit.com/y-ng/capstone_nifti_test/master/00000/BraTS-GLI-00000-000-t2f.nii.gz';
+export const niiFileT2W0 = 'https://cdn.rawgit.com/y-ng/capstone_nifti_test/master/00000/BraTS-GLI-00000-000-t2w.nii.gz';
+export const stlFile0 = 'https://cdn.rawgit.com/y-ng/capstone_nifti_test/master/00000/BraTS-GLI-00000-000-seg.stl';
+export const wholeStlFile0 = 'https://cdn.rawgit.com/y-ng/capstone_nifti_test/master/00000/BraTS-GLI-00000-000-seg-whole.stl';
+export const coreStlFile0 = 'https://cdn.rawgit.com/y-ng/capstone_nifti_test/master/00000/BraTS-GLI-00000-000-seg-core.stl';
+export const enhancedStlFile0 = 'https://cdn.rawgit.com/y-ng/capstone_nifti_test/master/00000/BraTS-GLI-00000-000-seg-enhanced.stl';
 
-export const niiFileTest9 = 'https://cdn.rawgit.com/y-ng/capstone_nifti_test/master/00009/BraTS-GLI-00009-001-t2f.nii.gz'
-export const stlFile9 = 'https://cdn.rawgit.com/y-ng/capstone_nifti_test/master/00009/BraTS-GLI-00009-001-seg.stl'
-export const wholeStlFile9 = 'https://cdn.rawgit.com/y-ng/capstone_nifti_test/master/00009/BraTS-GLI-00009-001-seg-whole.stl'
-export const coreStlFile9 = 'https://cdn.rawgit.com/y-ng/capstone_nifti_test/master/00009/BraTS-GLI-00009-001-seg-core.stl'
-export const enhancedStlFile9 = 'https://cdn.rawgit.com/y-ng/capstone_nifti_test/master/00009/BraTS-GLI-00009-001-seg-enhanced.stl'
+export const niiFileT1C3 = 'https://cdn.rawgit.com/y-ng/capstone_nifti_test/master/00003/BraTS-GLI-00003-000-t1c.nii.gz';
+export const niiFileT1N3 = 'https://cdn.rawgit.com/y-ng/capstone_nifti_test/master/00003/BraTS-GLI-00003-000-t1n.nii.gz';
+export const niiFileT2F3 = 'https://cdn.rawgit.com/y-ng/capstone_nifti_test/master/00003/BraTS-GLI-00003-000-t2f.nii.gz';
+export const niiFileT2W3 = 'https://cdn.rawgit.com/y-ng/capstone_nifti_test/master/00003/BraTS-GLI-00003-000-t2w.nii.gz';
+export const stlFile3 = 'https://cdn.rawgit.com/y-ng/capstone_nifti_test/master/00003/BraTS-GLI-00003-000-seg.stl';
+export const wholeStlFile3 = 'https://cdn.rawgit.com/y-ng/capstone_nifti_test/master/00003/BraTS-GLI-00003-000-seg-whole.stl';
+export const coreStlFile3 = 'https://cdn.rawgit.com/y-ng/capstone_nifti_test/master/00003/BraTS-GLI-00003-000-seg-core.stl';
+export const enhancedStlFile3 = 'https://cdn.rawgit.com/y-ng/capstone_nifti_test/master/00003/BraTS-GLI-00003-000-seg-enhanced.stl';
+
+export const niiFileT1C9 = 'https://cdn.rawgit.com/y-ng/capstone_nifti_test/master/00009/BraTS-GLI-00009-001-t1c.nii.gz';
+export const niiFileT1N9 = 'https://cdn.rawgit.com/y-ng/capstone_nifti_test/master/00009/BraTS-GLI-00009-001-t1n.nii.gz';
+export const niiFileT2F9 = 'https://cdn.rawgit.com/y-ng/capstone_nifti_test/master/00009/BraTS-GLI-00009-001-t2f.nii.gz';
+export const niiFileT2W9 = 'https://cdn.rawgit.com/y-ng/capstone_nifti_test/master/00009/BraTS-GLI-00009-001-t2w.nii.gz';
+export const stlFile9 = 'https://cdn.rawgit.com/y-ng/capstone_nifti_test/master/00009/BraTS-GLI-00009-001-seg.stl';
+export const wholeStlFile9 = 'https://cdn.rawgit.com/y-ng/capstone_nifti_test/master/00009/BraTS-GLI-00009-001-seg-whole.stl';
+export const coreStlFile9 = 'https://cdn.rawgit.com/y-ng/capstone_nifti_test/master/00009/BraTS-GLI-00009-001-seg-core.stl';
+export const enhancedStlFile9 = 'https://cdn.rawgit.com/y-ng/capstone_nifti_test/master/00009/BraTS-GLI-00009-001-seg-enhanced.stl';

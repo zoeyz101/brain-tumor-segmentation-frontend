@@ -9,9 +9,9 @@ const Visualization3D = () => {
   var niiFile = '';
 
   if (CONSTANTS.SHOW_OG) {
-    niiFile = CONSTANTS.niiFileTest9;
+    niiFile = CONSTANTS.niiFileT2F9;
   } else if (CONSTANTS.SHOW_GBM) {
-    niiFile = CONSTANTS.niiFileTest0;
+    niiFile = CONSTANTS.niiFileT2F0;
   }
 
   useEffect(() => {
@@ -35,8 +35,8 @@ const Visualization3D = () => {
       1000
     );
     camera.position.x = 150;
-    camera.position.y = -100;
-    camera.position.z = 500;
+    camera.position.y = -75;
+    camera.position.z = 600;
 
     const controls = new AMI.TrackballControl(camera, container);
 
@@ -49,7 +49,7 @@ const Visualization3D = () => {
 
     window.addEventListener('resize', onWindowResize, false);
 
-    // Load DICOM images and create AMI Helpers
+    // Load NIFTI images and create AMI Helpers
     const loader = new AMI.VolumeLoader(container);
     loader
       .load(niiFile)
@@ -99,32 +99,15 @@ const Visualization3D = () => {
 
       // stack
       const stackFolder = gui.addFolder('Stack');
-      // index range depends on stackHelper orientation.
+      // index range depends on stackHelper orientation
       const index = stackFolder
         .add(stackHelper, 'index', 0, stack.dimensionsIJK.z - 1)
         .step(1)
         .listen();
-      const orientation = stackFolder
-        .add(stackHelper, 'orientation', 0, 2)
-        .step(1)
-        .listen();
-      orientation.onChange(value => {
-        index.__max = stackHelper.orientationMaxIndex;
-        stackHelper.index = Math.floor(index.__max / 2);
-      });
       stackFolder.open();
 
       // slice
       const sliceFolder = gui.addFolder('Slice');
-      sliceFolder
-        .add(stackHelper.slice, 'windowWidth', 1, stack.minMax[1] - stack.minMax[0])
-        .step(1)
-        .listen();
-      sliceFolder
-        .add(stackHelper.slice, 'windowCenter', stack.minMax[0], stack.minMax[1])
-        .step(1)
-        .listen();
-      sliceFolder.add(stackHelper.slice, 'intensityAuto').listen();
       sliceFolder.add(stackHelper.slice, 'invert');
       sliceFolder.open();
 
@@ -139,6 +122,8 @@ const Visualization3D = () => {
       borderFolder.add(stackHelper.border, 'visible');
       borderFolder.addColor(stackHelper.border, 'color');
       borderFolder.open();
+
+      gui.close();
     };
 
   });

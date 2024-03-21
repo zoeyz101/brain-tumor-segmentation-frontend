@@ -5,22 +5,21 @@ import * as AMI from 'ami.js';
 import * as CONSTANTS from '../constants';
 import VisualizationLegend from './visualizationLegend';
 
-const VisualizationCompare = () => {
+const VisualizationCompareT2F = () => {
   var niiFile = '';
   var stlFile = '';
   var wholeStlFile = '';
   var coreStlFile = '';
   var enhancedStlFile =  '';
 
-  // TODO: update to use backend for visualizer 
   if (CONSTANTS.SHOW_OG) {
-    niiFile = CONSTANTS.niiFileTest9;
+    niiFile = CONSTANTS.niiFileT2F9;
     stlFile = CONSTANTS.stlFile9;
     wholeStlFile = CONSTANTS.wholeStlFile9;
     coreStlFile = CONSTANTS.coreStlFile9;
     enhancedStlFile =  CONSTANTS.enhancedStlFile9;
   } else if (CONSTANTS.SHOW_GBM) {
-    niiFile = CONSTANTS.niiFileTest0;
+    niiFile = CONSTANTS.niiFileT2F0;
     stlFile = CONSTANTS.stlFile0;
     wholeStlFile = CONSTANTS.wholeStlFile0;
     coreStlFile = CONSTANTS.coreStlFile0;
@@ -166,7 +165,7 @@ const VisualizationCompare = () => {
     });
     //*/
 
-    // Load DICOM data and setup the stack helper
+    // Load NIFTI data and setup the stack helper
     var loader = new AMI.VolumeLoader(container);
     loader
       .load(niiFile)
@@ -245,19 +244,11 @@ const VisualizationCompare = () => {
 
       // stack
       const stackFolder = gui.addFolder('Stack');
-      // index range depends on stackHelper orientation.
+      // index range depends on stackHelper orientation
       const index = stackFolder
         .add(stackHelper, 'index', 0, stack.dimensionsIJK.z - 1)
         .step(1)
         .listen();
-      const orientation = stackFolder
-        .add(stackHelper, 'orientation', 0, 2)
-        .step(1)
-        .listen();
-      orientation.onChange(value => {
-        index.__max = stackHelper.orientationMaxIndex;
-        stackHelper.index = Math.floor(index.__max / 2);
-      });
       stackFolder.open();
 
       const stackFolder_base = gui_base.addFolder('Stack');
@@ -265,40 +256,14 @@ const VisualizationCompare = () => {
         .add(stackHelper_base, 'index', 0, stack_base.dimensionsIJK.z - 1)
         .step(1)
         .listen();
-      const orientation_base = stackFolder_base
-        .add(stackHelper_base, 'orientation', 0, 2)
-        .step(1)
-        .listen();
-      orientation_base.onChange(value => {
-        index_base.__max = stackHelper_base.orientationMaxIndex;
-        stackHelper_base.index = Math.floor(index_base.__max / 2);
-      });
       stackFolder_base.open();
 
       // slice
       const sliceFolder = gui.addFolder('Slice');
-      sliceFolder
-        .add(stackHelper.slice, 'windowWidth', 1, stack.minMax[1] - stack.minMax[0])
-        .step(1)
-        .listen();
-      sliceFolder
-        .add(stackHelper.slice, 'windowCenter', stack.minMax[0], stack.minMax[1])
-        .step(1)
-        .listen();
-      sliceFolder.add(stackHelper.slice, 'intensityAuto').listen();
       sliceFolder.add(stackHelper.slice, 'invert');
       sliceFolder.open();
 
       const sliceFolder_base = gui_base.addFolder('Slice');
-      sliceFolder_base
-        .add(stackHelper_base.slice, 'windowWidth', 1, stack_base.minMax[1] - stack_base.minMax[0])
-        .step(1)
-        .listen();
-      sliceFolder_base
-        .add(stackHelper_base.slice, 'windowCenter', stack_base.minMax[0], stack_base.minMax[1])
-        .step(1)
-        .listen();
-      sliceFolder_base.add(stackHelper_base.slice, 'intensityAuto').listen();
       sliceFolder_base.add(stackHelper_base.slice, 'invert');
       sliceFolder_base.open();
 
@@ -323,6 +288,9 @@ const VisualizationCompare = () => {
       borderFolder_base.add(stackHelper_base.border, 'visible');
       borderFolder_base.addColor(stackHelper_base.border, 'color');
       borderFolder_base.open();
+
+      gui.close();
+      gui_base.close();
     };
 
   });
@@ -338,5 +306,5 @@ const VisualizationCompare = () => {
   );
 };
   
-export default VisualizationCompare;
+export default VisualizationCompareT2F;
   
