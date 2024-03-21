@@ -34,13 +34,14 @@ const NavBar: React.FC<NavBarProps> = ({view, userList }) => {
 
   const isPhysician = view == 'physician';
   const isPatient = view == 'patient';
+  const isCreate = view == 'create';
 
   return (
     <div className='Navbar'>
       <div className='nav-left'>
         <Image src={logo} width={60} height={50} alt='Logo'/>
         <p>NeuroMap</p>
-        {isPhysician? <SearchBar /> : null}
+        {isPhysician || isCreate? <SearchBar /> : null}
       </div>
       
       <ul>

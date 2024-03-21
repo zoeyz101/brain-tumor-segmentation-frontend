@@ -62,7 +62,7 @@ export default function Page() {
     
   return(
     <>
-    <Navbar view="physician"/>
+    <Navbar view="create"/>
     <div className='create-patient'>
       <h1>Create New Patient</h1>
       <form className="content-center w-full" action={handleSubmit}>
