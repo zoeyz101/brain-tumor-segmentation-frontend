@@ -83,6 +83,7 @@ export default function Page() {
       <input type='button' className='btn' value='&raquo;' aria-label='Next' onClick={nextModality} />
     </div>
     <div className='flex justify-center'>
+      <button> Edit Segmentation</button>
       <ApproveSegButton />
     </div>
   </>
