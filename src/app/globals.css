@@ -87,7 +87,7 @@ form label {
   /*position: relative;*/
   float: left;
   width: 50%;
-  height: 700px;
+  height: 40rem;
   padding: 10px;
   overflow: hidden;
   z-index: 0;
@@ -102,7 +102,7 @@ form label {
   /*position: relative;*/
   float: left;
   width: 50%;
-  height: 700px;
+  height: 40rem;
   padding: 10px;
   overflow: hidden;
   z-index: 0;
@@ -112,7 +112,7 @@ form label {
   width: 13rem;
   position: absolute;
   top: 4rem;
-  right: 2rem;
+  right: 2.5rem;
   z-index: 1;
 }
 
@@ -120,7 +120,7 @@ form label {
   width: 10rem;
   position: absolute;
   top: 14rem;
-  right: 13.5rem;
+  right: 12.7rem;
   z-index: 1;
 }
 
@@ -128,7 +128,7 @@ form label {
   width: 10rem;
   position: absolute;
   top: 14rem;
-  left: 32.5rem;
+  left: 32rem;
   z-index: 1;
 }
 
@@ -148,6 +148,11 @@ form label {
 
 .dg ul {
   display: block !important;
+  width: 230px !important;
+}
+
+.dg .close-button {
+  width: 230px !important;
 }
 
 li.folder {
