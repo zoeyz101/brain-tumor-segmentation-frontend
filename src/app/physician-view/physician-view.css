@@ -1,3 +1,6 @@
+.physician-view {
+    overflow-y: hidden !important;
+}
 .grid {
     grid-template-columns: 4fr 6fr;
     gap: 50px;
@@ -18,8 +21,10 @@
 }
 
 .name {
-    font-size: large;
+    font-size: 1.3rem;
     margin-right: 20px;
+    margin-left: 0;
+    padding: 0.5rem 10px;
 }
 
 .edit-seg {
@@ -31,5 +36,5 @@
     flex-direction: row;
     width: 100%;
     vertical-align: middle;
-    margin-bottom: 10px;
+    margin: 15px 0;
 }

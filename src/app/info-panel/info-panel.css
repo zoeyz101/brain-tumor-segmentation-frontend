@@ -1,24 +1,29 @@
 .dropdown {
-    position: relative;
-    /*display: inline-block;*/
-    padding-bottom: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
 }
 
 .dropdown-content {
-    /*display: none;*/
     display: block;
+    border: 2px solid var(--dark-accent-color);
 }
 
 .dropdown-heading {
+    background-color: var(--dark-accent-color);
+    color: #ffffff;
+    padding: 10px;
+    width: 100%;
     cursor: pointer;
+    display: flex;
+    justify-content: space-between;
 }
 
-/*
-.dropdown:hover .dropdown-content {
-    display: block;
-}
-*/
-
-p {
+.dropdown-text {
+    padding: 0 1rem;
     white-space: pre-wrap;
+    color: black;
+}
+
+u {
+    color: black !important;
 }

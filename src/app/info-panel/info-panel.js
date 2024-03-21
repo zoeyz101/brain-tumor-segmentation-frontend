@@ -37,45 +37,52 @@ function InfoPanel() {
     <div>
       <div className='dropdown'>
         { !showDiagnosisInfo && (
-          <b className='dropdown-heading' onClick={toggleDiagnosisInfo}>Diagnosis Information &#x25BE;</b>
+          <div className='dropdown-heading' onClick={toggleDiagnosisInfo}><b>Diagnosis Information</b><b>&#x25BE;</b></div>
         ) }
         { showDiagnosisInfo && (
           <div className='dropdown-content'>
-            <b className='dropdown-heading' onClick={toggleDiagnosisInfo}>Diagnosis Information &#x25B4;</b>
-            <p>{ parse(DIAGNOSIS_INFO) }</p>
+            <div className='dropdown-heading' onClick={toggleDiagnosisInfo}> <b>Diagnosis Information </b><b>&#x25B4;</b></div>
+            <div className='dropdown-text'>{ parse(DIAGNOSIS_INFO) }</div>
           </div>
         ) }
       </div>
       <div className='dropdown'>
         { !showAffectedAreas && (
-          <b className='dropdown-heading' onClick={toggleAffectedAreas}>Affected Areas &#x25BE;</b>
+          <div className='dropdown-heading' onClick={toggleAffectedAreas}> <b>Affected Areas</b><b> &#x25BE;</b></div>
         ) }
         { showAffectedAreas && (
           <div className='dropdown-content'>
-            <b className='dropdown-heading' onClick={toggleAffectedAreas}>Affected Areas &#x25B4;</b>
-            <p>{ parse(AFFECTED_AREAS) }</p>
+            <div className='dropdown-heading' onClick={toggleAffectedAreas}> <b>Affected Areas</b><b> &#x25B4; </b></div>
+            <div className='dropdown-text'>{ parse(AFFECTED_AREAS) }</div>
         </div>
         ) }
       </div>
       <div className='dropdown'>
         { !showTreatmentOptions && (
-          <b className='dropdown-heading' onClick={toggleTreatmentOptions}>Treatment Options &#x25BE;</b>
+          <div className='dropdown-heading' onClick={toggleTreatmentOptions}>
+            <b>Treatment Options </b>
+            <b>&#x25BE;</b>
+          </div>
+          
         ) }
         { showTreatmentOptions && (
           <div className='dropdown-content'>
-            <b className='dropdown-heading' onClick={toggleTreatmentOptions}>Treatment Options &#x25B4;</b>
-            <p>{ parse(TREATMENT_OPTIONS) }</p>
+            <div className='dropdown-heading' onClick={toggleTreatmentOptions}>
+            <b>Treatment Options </b>
+            <b>&#x25B4;</b>
+          </div>
+            <div className='dropdown-text'>{ parse(TREATMENT_OPTIONS) }</div>
         </div>
         ) }
       </div>
       <div className='dropdown'>
         { !showAdditionalInfo && (
-          <b className='dropdown-heading' onClick={toggleAdditionalInfo}>Additional Information &#x25BE;</b>
+          <div className='dropdown-heading' onClick={toggleAdditionalInfo}><b>Additional Information </b><b>&#x25BE;</b> </div>
         ) }
         { showAdditionalInfo && (
           <div className='dropdown-content'>
-            <b className='dropdown-heading' onClick={toggleAdditionalInfo}>Additional Information &#x25B4;</b>
-            <p>{ parse(ADDITIONAL_INFO) }</p>
+             <div className='dropdown-heading' onClick={toggleAdditionalInfo}><b>Additional Information </b><b>&#x25B4;</b> </div>
+            <div className='dropdown-text'>{ parse(ADDITIONAL_INFO) }</div>
           </div>
         ) }
       </div>
